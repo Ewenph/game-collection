@@ -1,5 +1,15 @@
 {
-    "require": {
-        "vlucas/phpdotenv": "^5.4"
-    }
+    "name": "roro/game-collection",
+    "autoload": {
+        "psr-4": {
+            "Roro\\GameCollection\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Romain",
+            "email": "romainthebault22100@gmail.com"
+        }
+    ],
+    "require": {}
 }
