@@ -15,10 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un jeu</title>
+    <link rel="stylesheet" href="style/add_game.css">
 </head>
 <body>
-    <h2>Ajouter un jeu à sa bibliothèque</h2>
     <form action="add_game.php" method="POST">
+        <h2>Ajouter un jeu à sa bibliothèque</h2>
+        <p>Le jeu que vous souhaitez ajouter n'existe pas ! Vous pouvez le créer, celui-ci sera automatiquement ajouté à votre bibliothèque !</p>
+
+        <!-- Champs du formulaire -->
         <label for="nom">Nom du jeu</label>
         <input type="text" id="nom" name="nom" required>
 
@@ -38,24 +42,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="url" id="url_site" name="url_site">
 
         <label>Plateformes</label>
-        <div>
-            <input type="checkbox" id="pc" name="plateformes[]" value="PC">
-            <label for="pc">PC</label>
-
-            <input type="checkbox" id="playstation" name="plateformes[]" value="PlayStation">
-            <label for="playstation">PlayStation</label>
-
-            <input type="checkbox" id="xbox" name="plateformes[]" value="Xbox">
-            <label for="xbox">Xbox</label>
-
-            <input type="checkbox" id="nintendo" name="plateformes[]" value="Nintendo Switch">
-            <label for="nintendo">Nintendo Switch</label>
-
-            <input type="checkbox" id="mobile" name="plateformes[]" value="Mobile">
-            <label for="mobile">Mobile</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="plateformes[]" value="PC"> PC</label>
+            <label><input type="checkbox" name="plateformes[]" value="PlayStation"> PlayStation</label>
+            <label><input type="checkbox" name="plateformes[]" value="Xbox"> Xbox</label>
+            <label><input type="checkbox" name="plateformes[]" value="Nintendo Switch"> Nintendo Switch</label>
+            <label><input type="checkbox" name="plateformes[]" value="Mobile"> Mobile</label>
         </div>
 
         <button type="submit">Ajouter le jeu</button>
     </form>
+
 </body>
 </html>
