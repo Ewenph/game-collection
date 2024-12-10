@@ -12,7 +12,6 @@ function routeRequest() {
         case '/register':
             require_once __DIR__ . '/controllers/RegisterController.php';
             break;
-        // Add more routes as needed
         default:
             http_response_code(404);
             echo "Page not found";
