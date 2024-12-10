@@ -59,9 +59,9 @@ function routeRequest() {
             $controller->index();
             break;
         default:
-            require_once __DIR__ . '/controllers/HomeController.php';
-            $controller = new HomeController();
-            $controller->index();
+            require_once __DIR__ . '/controllers/LoginController.php';
+            $controller = new LoginController();
+            $controller->showLoginForm();
             break;
     }
 }
