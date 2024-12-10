@@ -3,6 +3,11 @@ function routeRequest() {
     $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
     switch ($uri) {
+        case '/game-collection/':
+            require_once __DIR__ . '/controllers/HomeController.php';
+            $controller = new HomeController();
+            $controller->index();
+            break;
         case '/game-collection/home':
             require_once __DIR__ . '/controllers/HomeController.php';
             $controller = new HomeController();
@@ -59,9 +64,9 @@ function routeRequest() {
             $controller->index();
             break;
         default:
-            require_once __DIR__ . '/controllers/LoginController.php';
-            $controller = new LoginController();
-            $controller->showLoginForm();
+            http_response_code(404);
+            echo "Page non trouvée";
+            var_dump($uri);
             break;
     }
 }

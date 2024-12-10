@@ -5,8 +5,11 @@ class LoginController {
     }
 
     public function login() {
+
     }
 
     public function logout() {
+        session_destroy();
+        header('Location: /login');
     }
 }

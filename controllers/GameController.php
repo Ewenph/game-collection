@@ -1,5 +1,35 @@
 <?php
 class GameController {
+
+    public function index() {
+        require_once __DIR__ . '/../views/games.php';
+    }
+
+    public function showGame() {
+        require_once __DIR__ . '/../views/game.php';
+    }
+
+    public function showAddGameForm() {
+        require_once __DIR__ . '/../views/add_game.php';
+    }
+
+    public function deleteGame() {
+        try {
+            $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'root', ''); // Modifier user/password selon ta configuration
+
+            $id = $_GET['id'];
+
+            $stmt = $db->prepare("DELETE FROM Jeu WHERE Id_jeu = :id");
+            $stmt->execute(['id' => $id]);
+
+            header("Location: games.php");
+            exit;
+
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+        }
+    }
+
     public function addGame() {
         try {
             $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'root', ''); // Modifier user/password selon ta configuration

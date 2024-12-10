@@ -1,4 +1,5 @@
-<?php
+<?php 
+require_once __DIR__ . '/header.php';
 require_once __DIR__ . '/../controllers/GameController.php';
 
 $controller = new GameController();
