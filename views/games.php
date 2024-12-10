@@ -2,27 +2,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Jeux</title>
+    <title>Games</title>
+    <link rel="stylesheet" href="/game-collection/views/style/common.css">
 </head>
 <body>
-<h1>Classement des temps passés</h1>
-<table>
-        <thead>
-            <tr>
-                <th>Joueur</th>
-                <th>Temps_passés</th>
-                <th>Jeu favori</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($jeux as $jeu): ?>
+    <main>
+        <h1>Games</h1>
+        <table>
+            <thead>
                 <tr>
-                    <td><?= htmlspecialchars($jeu['Id_uti']) ?></td>
-                    <td><?= htmlspecialchars($jeu['Temps_jeu']) ?></td>
-                    <td><?= htmlspecialchars($jeu['Editeur_jeu']) ?></td>
+                    <th>Name</th>
+                    <th>Release Date</th>
+                    <th>Developer</th>
+                    <th>Platform</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Game 1</td>
+                    <td>2024-01-01</td>
+                    <td>Developer A</td>
+                    <td>Platform A</td>
+                </tr>
+                <tr>
+                    <td>Game 2</td>
+                    <td>2024-01-02</td>
+                    <td>Developer B</td>
+                    <td>Platform B</td>
+                </tr>
+                <tr>
+                    <td>Game 3</td>
+                    <td>2024-01-03</td>
+                    <td>Developer C</td>
+                    <td>Platform C</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        Game Collection - 2024 - All rights reserved
+    </footer>
 </body>
 </html>
