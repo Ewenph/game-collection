@@ -1,5 +1,12 @@
 {
+    "name": "ewenp/game-collection",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Ewenp\\GameCollection\\": "src/"
+        }
+    },
     "require": {
-        "vlucas/phpdotenv": "^5.4"
+        "vlucas/phpdotenv": "^5.6"
     }
 }
