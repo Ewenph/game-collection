@@ -11,31 +11,23 @@
     <main>
         <h1>Classement des temps passés</h1>
         <table>
-            <thead>
+        <thead>
+            <tr>
+                <th>Joueur</th>
+                <th>Temps passés</th>
+                <th>Jeu favori</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($users as $user): ?>
                 <tr>
-                    <th>Joueur</th>
-                    <th>Temps Passés</th>
-                    <th>Jeu Favori</th>
+                    <td><?= htmlspecialchars($user['Prenom'] . ' ' . $user['Nom']) ?></td>
+                    <td><?= htmlspecialchars($user['Total_Heures']) ?></td>
+                    <td><?= htmlspecialchars($user['Jeu_Prefere']) ?></td>
                 </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Joueur 1</td>
-                    <td>120 heures</td>
-                    <td>Jeu A</td>
-                </tr>
-                <tr>
-                    <td>Joueur 2</td>
-                    <td>100 heures</td>
-                    <td>Jeu B</td>
-                </tr>
-                <tr>
-                    <td>Joueur 3</td>
-                    <td>80 heures</td>
-                    <td>Jeu C</td>
-                </tr>
-            </tbody>
-        </table>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
     </main>
     <footer>
         Game Collection - 2024 - Tous droits réservés
