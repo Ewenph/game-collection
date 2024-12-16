@@ -14,6 +14,7 @@
                 <li><a href="/game-collection/views/register.php">Inscription</a></li>
                 <li><a href="/game-collection/views/home.php">Accueil</a></li>
                 <li><a href="/game-collection/views/games.php">Jeux</a></li>
+                <li><a href="/game-collection/views/add_game.php">Ajouter un jeu</a></li>
                 <li><a href="/game-collection/views/leaderboard.php">Classement</a></li>
                 <li><a href="/game-collection/views/profile.php">Profil</a></li>
             </ul>
