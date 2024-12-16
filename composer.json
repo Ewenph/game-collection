@@ -1,14 +1,14 @@
 {
-    "name": "roro/game-collection",
+    "name": "ewenp/game-collection",
     "autoload": {
         "psr-4": {
-            "Roro\\GameCollection\\": "src/"
+            "Ewenp\\GameCollection\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Romain",
-            "email": "romainthebault22100@gmail.com"
+            "name": "Ewen",
+            "email": "ewen.pichoff@gmail.com"
         }
     ],
     "require": {}
