@@ -19,39 +19,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="style/add_game.css">
 </head>
 <body>
-    <form action="add_game.php" method="POST">
-        <h2>Ajouter un jeu à sa bibliothèque</h2>
+    <div class="container">
+        <h1>Ajouter un jeu à sa bibliothèque</h1>
         <p>Le jeu que vous souhaitez ajouter n'existe pas ! Vous pouvez le créer, celui-ci sera automatiquement ajouté à votre bibliothèque !</p>
+        
+        <form action="add_game.php" method="POST">
+            <label for="nom">Nom du jeu</label>
+            <input type="text" id="nom" name="nom" placeholder="Nom du jeu" required>
 
-        <label for="nom">Nom du jeu</label>
-        <input type="text" id="nom" name="nom" required>
+            <label for="editeur">Éditeur du jeu</label>
+            <input type="text" id="editeur" name="editeur" placeholder="Éditeur du jeu">
 
-        <label for="editeur">Éditeur du jeu</label>
-        <input type="text" id="editeur" name="editeur">
+            <label for="sortie">Sortie du jeu</label>
+            <input type="date" id="sortie" name="sortie">
 
-        <label for="sortie">Date de sortie</label>
-        <input type="date" id="sortie" name="sortie">
+            <!-- Groupement des plateformes -->
+            <label>Plateformes</label>
+            <div class="platform-group">
+                <div>
+                    <input type="checkbox" id="playstation" name="platforms[]" value="Playstation">
+                    <label for="playstation">Playstation</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="xbox" name="platforms[]" value="Xbox">
+                    <label for="xbox">Xbox</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="nintendo" name="platforms[]" value="Nintendo">
+                    <label for="nintendo">Nintendo</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="pc" name="platforms[]" value="PC">
+                    <label for="pc">PC</label>
+                </div>
+            </div>
 
-        <label for="description">Description</label>
-        <textarea id="description" name="description"></textarea>
+            <label for="description">Description du jeu</label>
+            <textarea id="description" name="description" placeholder="Description du jeu"></textarea>
 
-        <label for="url_jeu">URL de la cover</label>
-        <input type="url" id="url_jeu" name="url_jeu">
+            <label for="cover">URL de la cover</label>
+            <input type="url" id="cover" name="cover" placeholder="URL de la cover">
 
-        <label for="url_site">URL du site officiel</label>
-        <input type="url" id="url_site" name="url_site">
+            <label for="site">URL du site</label>
+            <input type="url" id="site" name="site" placeholder="URL du site">
 
-        <label>Plateformes</label>
-        <div class="checkbox-group">
-            <label><input type="checkbox" name="plateformes[]" value="PC"> PC</label>
-            <label><input type="checkbox" name="plateformes[]" value="PlayStation"> PlayStation</label>
-            <label><input type="checkbox" name="plateformes[]" value="Xbox"> Xbox</label>
-            <label><input type="checkbox" name="plateformes[]" value="Nintendo Switch"> Nintendo Switch</label>
-            <label><input type="checkbox" name="plateformes[]" value="Mobile"> Mobile</label>
-        </div>
+            <button type="submit">Ajouter le jeu</button>
+        </form>
+    </div>
 
-        <button type="submit">Ajouter le jeu</button>
-    </form>
-
+    <footer>
+        Game Collection - 2023 - Tous droits réservés
+    </footer>
 </body>
 </html>

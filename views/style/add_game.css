@@ -1,90 +1,109 @@
 /* Style général */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #181623;
     color: #ffffff;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* En-tête navigation */
+header {
+    background-color: #1f1b2d;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #5a43ff;
 }
 
 /* Conteneur principal */
-form {
-    background-color: #252233;
-    padding: 30px;
-    border-radius: 10px;
-    width: 500px;
+.container {
+    flex: 1;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1f1b2d;
+    border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-form h2 {
-    text-align: center;
-    margin-bottom: 10px;
-    color: #ffffff;
-    font-size: 22px;
+/* Titre et description */
+h1 {
+    font-size: 28px;
     font-weight: bold;
-}
-
-form p {
+    margin-bottom: 10px;
     text-align: center;
-    margin-bottom: 20px;
-    color: #aaaaaa;
-    font-size: 14px;
 }
 
-/* Labels */
+p {
+    font-size: 14px;
+    text-align: center;
+    color: #bbbbbb;
+    margin-bottom: 20px;
+}
+
+/* Champs de formulaire */
 form label {
     display: block;
     margin-bottom: 8px;
     font-size: 14px;
-    color: #ffffff;
+    font-weight: bold;
+    color: #dddddd;
 }
 
-/* Champs de saisie */
-form input[type="text"],
-form input[type="date"],
-form input[type="url"],
+form input,
 form textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 15px;
     border: none;
     border-radius: 5px;
-    background-color: #1e1a2e;
+    background-color: #252033;
     color: #ffffff;
     font-size: 14px;
+    box-sizing: border-box;
 }
 
 form textarea {
     resize: none;
-    height: 80px;
+    height: 100px;
 }
 
-/* Boutons radio et checkbox */
 form input[type="checkbox"] {
+    width: auto;
     margin-right: 8px;
 }
 
-form div {
+.platform-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-bottom: 15px;
 }
 
-/* Section des plateformes */
-form div label {
+.platform-group label {
+    display: flex;
+    align-items: center;
     font-size: 14px;
-    font-weight: normal;
-    margin-bottom: 5px;
-    display: inline;
+    color: #ffffff;
 }
 
-/* Bouton */
+/* Bouton principal */
 form button {
-    display: block;
-    width: 100%;
-    background-color: #5c5cff;
+    background-color: #5a43ff;
     color: #ffffff;
     font-size: 14px;
     font-weight: bold;
@@ -92,36 +111,40 @@ form button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     text-transform: uppercase;
+    transition: background-color 0.3s ease;
 }
 
 form button:hover {
-    background-color: #4a4adc;
+    background-color: #4a3bd1;
 }
 
-/* Style des placeholders */
-form input::placeholder,
-form textarea::placeholder {
-    color: #888888;
-    font-size: 12px;
-}
-
-/* Ajustement des marges */
-form div {
+/* Groupement des plateformes - Alignement vertical */
+.platform-group {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-}
-
-/* Alignement des checkboxes */
-form div.checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
+    flex-direction: column; /* Aligner de haut en bas */
     gap: 10px;
+    margin-bottom: 15px;
 }
 
-form div.checkbox-group label {
+.platform-group div {
     display: flex;
     align-items: center;
+    gap: 8px;
+}
+
+.platform-group label {
+    font-size: 14px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* Pied de page */
+footer {
+    text-align: center;
+    color: #bbbbbb;
+    padding: 10px 0;
+    font-size: 12px;
+    background-color: #1f1b2d;
+    width: 100%;
 }
