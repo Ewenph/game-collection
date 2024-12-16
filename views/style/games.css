@@ -131,6 +131,15 @@ h1, h2 {
     background-color: #f44336;
 }
 
+/* Disable */
+
+.add-button.disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    color: #ccc;
+    box-shadow: none;
+}
+
 
 /* Pied de page */
 footer {
