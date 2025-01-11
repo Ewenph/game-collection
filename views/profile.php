@@ -1,4 +1,50 @@
-<?php require_once __DIR__ . '/header.php'; ?>
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start(); // Démarre la session si elle n'est pas déjà démarrée
+}
+require_once __DIR__ . '/../models/User.php';
+
+// Vérifie si l'utilisateur est connecté
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /game-collection/views/login.php');
+    exit;
+}
+
+$userModel = new User();
+$user = $userModel->findById($_SESSION['user_id']);
+
+if (!$user) {
+    // Si l'utilisateur n'est pas trouvé, redirige vers la page de connexion
+    header('Location: /game-collection/views/login.php');
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['delete_account'])) {
+        // Suppression du compte
+        $userModel->delete($_SESSION['user_id']);
+        session_destroy();
+        header('Location: /game-collection/views/register.php');
+        exit;
+    } else {
+        // Mise à jour du profil
+        $lastname = $_POST['lastname'];
+        $firstname = $_POST['firstname'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
+
+        if ($password === $confirm_password) {
+            $userModel->update($_SESSION['user_id'], $lastname, $firstname, $email, $password);
+            header('Location: /game-collection/views/profile.php');
+            exit;
+        } else {
+            $error = 'Les mots de passe ne correspondent pas';
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,25 +55,28 @@
 </head>
 <body>
     <main>
-        <form action="/game-collection/profile/update" method="post">
+        <form action="/game-collection/views/profile.php" method="post">
             <h1>Mon profil</h1>
+            <?php if (isset($error)): ?>
+                <p style="color: red;"><?= htmlspecialchars($error) ?></p>
+            <?php endif; ?>
             <label for="lastname">Nom :</label>
-            <input type="text" id="lastname" name="lastname" placeholder="MARCEL" required>
+            <input type="text" id="lastname" name="lastname" value="<?= htmlspecialchars($user['Nom_uti']) ?>" required>
 
             <label for="firstname">Prénom :</label>
-            <input type="text" id="firstname" name="firstname" placeholder="Guillaume" required>
+            <input type="text" id="firstname" name="firstname" value="<?= htmlspecialchars($user['Pren_uti']) ?>" required>
 
             <label for="email">Email :</label>
-            <input type="email" id="email" name="email" placeholder="gmarcel@tech.fr" required>
+            <input type="email" id="email" name="email" value="<?= htmlspecialchars($user['Mail_uti']) ?>" required>
 
             <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password" placeholder="********" required>
+            <input type="password" id="password" name="password" required>
 
             <label for="confirm-password">Confirmation du mot de passe :</label>
-            <input type="password" id="confirm-password" name="confirm_password" placeholder="********" required>
+            <input type="password" id="confirm-password" name="confirm_password" required>
 
             <button type="submit">Modifier</button>
-            <button type="button" onclick="confirmDelete()">Supprimer mon compte</button>
+            <button type="submit" name="delete_account">Supprimer mon compte</button>
             <a href="/game-collection/views/login.php" class="logout-button">Se déconnecter</a>
         </form>
     </main>

@@ -14,7 +14,7 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
+    align-items: center; /* Aligner les éléments verticalement */
 }
 
 nav ul li {
@@ -29,4 +29,9 @@ nav ul li a {
 
 nav ul li a:hover {
     text-decoration: underline;
+}
+
+.logo {
+    height: 40px; /* Ajustez la hauteur du logo selon vos besoins */
+    margin-right: 15px; /* Espace entre le logo et les autres éléments */
 }

@@ -1,3 +1,8 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,10 +12,11 @@
     <link rel="stylesheet" href="/game-collection/views/style/header.css">
 </head>
 <body>
-    <header>
+    <header class="header">
         <nav>
-            <ul>
-                <li><a href="/game-collection/views/home.php">ACCUEIL</a></li>
+            <ul class="nav-list">
+                <li><a href="/game-collection/views/home.php"><img src="/game-collection/assets/logo.png" alt="Logo" class="logo"></a></li>
+                <li><a href="/game-collection/views/home.php">MA BIBLIOTHÈQUE</a></li>
                 <li><a href="/game-collection/views/games.php">AJOUTER UN JEU</a></li>
                 <li><a href="/game-collection/views/leaderboard.php">CLASSEMENT</a></li>
                 <li><a href="/game-collection/views/profile.php">PROFIL</a></li>

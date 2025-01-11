@@ -19,6 +19,12 @@ class User {
         }
     }
 
+    public function findById($id) {
+        $stmt = $this->db->prepare("SELECT * FROM Utilisateur WHERE Id_uti = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function findByEmail($email) {
         $stmt = $this->db->prepare("SELECT * FROM Utilisateur WHERE Mail_uti = :email");
         $stmt->execute(['email' => $email]);
@@ -35,6 +41,26 @@ class User {
             'prenom' => $prenom,
             'email' => $email,
             'password' => password_hash($password, PASSWORD_DEFAULT)
+        ]);
+    }
+
+    public function delete($id) {
+        $stmt = $this->db->prepare("DELETE FROM Utilisateur WHERE Id_uti = :id");
+        $stmt->execute(['id' => $id]);
+    }
+
+    public function update($id, $nom, $prenom, $email, $password) {
+        $stmt = $this->db->prepare("
+            UPDATE Utilisateur 
+            SET Nom_uti = :nom, Pren_uti = :prenom, Mail_uti = :email, Mdp_uti = :password 
+            WHERE Id_uti = :id
+        ");
+        $stmt->execute([
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'email' => $email,
+            'password' => password_hash($password, PASSWORD_DEFAULT),
+            'id' => $id
         ]);
     }
 }

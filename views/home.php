@@ -1,6 +1,4 @@
 <?php
-session_start();
-$_SESSION['user_id'] = 3; // Simule un utilisateur connecté pour le test
 require_once __DIR__ . '/header.php';
 
 // Vérifie si l'utilisateur est connecté
