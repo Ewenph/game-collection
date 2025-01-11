@@ -7,10 +7,18 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Connexion à la base de données
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+$dbname = $_ENV["DB_NAME"];
+$username = $_ENV["DB_USER"];
+$password = $_ENV["DB_PASSWORD"];
 try {
-    $db = new PDO("mysql:host=localhost;dbname={$this->dbname};charset=utf8", $this->username, $this->password);
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
+    $db = new PDO("mysql:host=localhost;dbname={$dbname};charset=utf8", $username, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+    exit;
 }
 
 // Récupération des jeux de l'utilisateur

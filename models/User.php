@@ -1,17 +1,22 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
 class User {
     private $db;
-    private $dbname = 'td21-1';
-    private $username = 'td21-1';
-    private $password = 'BJCkZcFAIUeJqL4E';
 
     public function __construct() {
         $this->connect_to_database();
     }
 
     private function connect_to_database() {
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+        $dotenv->load();
+
+        $dbname = $_ENV["DB_NAME"];
+        $username = $_ENV["DB_USER"];
+        $password = $_ENV["DB_PASSWORD"];
         try {
-            $this->db = new PDO("mysql:host=localhost;dbname={$this->dbname};charset=utf8", $this->username, $this->password);
+            $this->db = new PDO("mysql:host=localhost;dbname={$dbname};charset=utf8", $username, $password);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
