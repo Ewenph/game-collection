@@ -2,6 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start(); // Démarre la session si elle n'est pas déjà démarrée
 }
+require_once __DIR__ . '/header.php';
 require_once __DIR__ . '/../models/User.php';
 
 // Vérifie si l'utilisateur est connecté
@@ -54,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="/game-collection/views/style/common.css">
 </head>
 <body>
-    <main>
+    <main style="padding-top: 60px;"> <!-- Ajout de padding-top pour éviter le chevauchement -->
         <form action="/game-collection/views/profile.php" method="post">
             <h1>Mon profil</h1>
             <?php if (isset($error)): ?>
