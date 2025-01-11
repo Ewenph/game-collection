@@ -7,7 +7,7 @@ require_once __DIR__ . '/../models/User.php';
 
 // Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
-    header('Location: /game-collection/views/login.php');
+    header('Location: /login');
     exit;
 }
 
@@ -16,7 +16,7 @@ $user = $userModel->findById($_SESSION['user_id']);
 
 if (!$user) {
     // Si l'utilisateur n'est pas trouvé, redirige vers la page de connexion
-    header('Location: /game-collection/views/login.php');
+    header('Location: /login');
     exit;
 }
 
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Suppression du compte
         $userModel->delete($_SESSION['user_id']);
         session_destroy();
-        header('Location: /game-collection/views/register.php');
+        header('Location: /register');
         exit;
     } else {
         // Mise à jour du profil
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($password === $confirm_password) {
             $userModel->update($_SESSION['user_id'], $lastname, $firstname, $email, $password);
-            header('Location: /game-collection/views/profile.php');
+            header('Location: /profile');
             exit;
         } else {
             $error = 'Les mots de passe ne correspondent pas';
@@ -52,11 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon profil</title>
-    <link rel="stylesheet" href="/game-collection/views/style/common.css">
+    <link rel="stylesheet" href="/views/style/common.css">
 </head>
 <body>
     <main style="padding-top: 60px;"> <!-- Ajout de padding-top pour éviter le chevauchement -->
-        <form action="/game-collection/views/profile.php" method="post">
+        <form action="/profile" method="POST">
             <h1>Mon profil</h1>
             <?php if (isset($error)): ?>
                 <p style="color: red;"><?= htmlspecialchars($error) ?></p>
@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <button type="submit">Modifier</button>
             <button type="submit" name="delete_account">Supprimer mon compte</button>
-            <a href="/game-collection/views/login.php" class="logout-button">Se déconnecter</a>
+            <a href="/login" class="logout-button">Se déconnecter</a>
         </form>
     </main>
     <footer>

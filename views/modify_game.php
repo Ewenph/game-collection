@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h1>Ajouter un jeu à sa bibliothèque</h1>
         <p>Le jeu que vous souhaitez ajouter n'existe pas ! Vous pouvez le créer, celui-ci sera automatiquement ajouté à votre bibliothèque !</p>
         
-        <form action="add_game.php" method="POST">
+        <form action="add_game" method="POST">
             <label for="nom">Nom du jeu</label>
             <input type="text" id="nom" name="nom" placeholder="Nom du jeu" required>
 

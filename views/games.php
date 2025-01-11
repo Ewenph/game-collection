@@ -1,6 +1,8 @@
 <?php
-session_start();
-$_SESSION['user_id'] = 3; // Simule un utilisateur connecté pour le test
+if (session_status() == PHP_SESSION_NONE) {
+    session_start(); // Démarre la session si elle n'est pas déjà démarrée
+}
+
 require_once __DIR__ . '/header.php';
 
 // Vérifie si l'utilisateur est connecté
@@ -9,10 +11,18 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Connexion à la base de données
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+$dbname = $_ENV["DB_NAME"];
+$username = $_ENV["DB_USER"];
+$password = $_ENV["DB_PASSWORD"];
 try {
-    $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'root', ''); // Modifier user/password
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
+    $db = new PDO("mysql:host=localhost;dbname={$dbname};charset=utf8", $username, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+    exit;
 }
 
 // Gestion de l'ajout à la bibliothèque
@@ -69,7 +79,7 @@ if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Jeux</title>
-    <link rel="stylesheet" href="style/games.css">
+    <link rel="stylesheet" href="/views/style/games.css">
 </head>
 <body>
     <div class="container">

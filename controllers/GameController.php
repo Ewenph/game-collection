@@ -1,21 +1,24 @@
 <?php
 class GameController {
+    private $db;
+    private $dbname = 'td21-1';
+    private $username = 'td21-1';
+    private $password = 'BJCkZcFAIUeJqL4E';
+    // public function index() {
+    //     require_once __DIR__ . '/../views/games.php';
+    // }
 
-    public function index() {
-        require_once __DIR__ . '/../views/games.php';
-    }
+    // public function showGame() {
+    //     require_once __DIR__ . '/../views/game.php';
+    // }
 
-    public function showGame() {
-        require_once __DIR__ . '/../views/game.php';
-    }
-
-    public function showAddGameForm() {
-        require_once __DIR__ . '/../views/add_game.php';
-    }
+    // public function showAddGameForm() {
+    //     require_once __DIR__ . '/../views/add_game.php';
+    // }
 
     public function deleteGame() {
         try {
-            $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'root', ''); // Modifier user/password selon ta configuration
+            $db = new PDO("mysql:host=localhost;dbname={$this->dbname};charset=utf8", $this->username, $this->password);
 
             $id = $_GET['id'];
 
@@ -32,7 +35,7 @@ class GameController {
 
     public function addGame() {
         try {
-            $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'root', ''); // Modifier user/password selon ta configuration
+            $db = new PDO("mysql:host=localhost;dbname={$this->dbname};charset=utf8", $this->username, $this->password);
 
             // Récupération des champs du formulaire
             $nom = htmlspecialchars($_POST['nom']);
@@ -97,7 +100,7 @@ class GameController {
 
     public function modifyGame($id_jeu) {
         try {
-            $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'root', ''); // Modifier user/password selon ta configuration
+            $db = new PDO("mysql:host=localhost;dbname={$this->dbname};charset=utf8", $this->username, $this->password);
     
             // Récupération des champs du formulaire
             $nom = htmlspecialchars($_POST['nom']);
