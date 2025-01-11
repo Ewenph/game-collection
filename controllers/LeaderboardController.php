@@ -1,5 +1,10 @@
 <?php
 class LeaderboardController {
+    private $db;
+    private $dbname = 'td21-1';
+    private $username = 'td21-1';
+    private $password = 'BJCkZcFAIUeJqL4E';
+
     public function index() {
         // Récupérer les données des utilisateurs
         $users = $this->selecInfo();
@@ -14,7 +19,7 @@ class LeaderboardController {
     public function selecInfo() {
         try {
             // Connexion à la base de données
-            $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'td21-1', 'td21-1'); // Modifier user/password selon ta configuration
+            $db = new PDO("mysql:host=localhost;dbname={$this->dbname};charset=utf8", $this->username, $this->password);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Requête SQL pour récupérer les informations des joueurs
