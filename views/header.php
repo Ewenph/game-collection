@@ -10,12 +10,10 @@
     <header>
         <nav>
             <ul>
-                <li><a href="/game-collection/views/login.php">Connexion</a></li>
-                <li><a href="/game-collection/views/register.php">Inscription</a></li>
-                <li><a href="/game-collection/views/home.php">Accueil</a></li>
-                <li><a href="/game-collection/views/games.php">Jeux</a></li>
-                <li><a href="/game-collection/views/leaderboard.php">Classement</a></li>
-                <li><a href="/game-collection/views/profile.php">Profil</a></li>
+                <li><a href="/game-collection/views/home.php">ACCUEIL</a></li>
+                <li><a href="/game-collection/views/games.php">AJOUTER UN JEU</a></li>
+                <li><a href="/game-collection/views/leaderboard.php">CLASSEMENT</a></li>
+                <li><a href="/game-collection/views/profile.php">PROFIL</a></li>
             </ul>
         </nav>
     </header>

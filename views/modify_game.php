@@ -17,10 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un jeu</title>
     <link rel="stylesheet" href="style/add_game.css">
-    <style>
-        display: flex;
-        justify-content: flex-start;
-    </style>
 </head>
 <body>
     <div class="container">

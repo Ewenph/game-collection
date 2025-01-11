@@ -1,3 +1,28 @@
+<?php
+require_once __DIR__ . '/../models/User.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nom = $_POST['lastname'];
+    $prenom = $_POST['firstname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $passwordConfirmation = $_POST['confirm_password'];
+
+    if ($password !== $passwordConfirmation) {
+        $error = 'Les mots de passe ne correspondent pas';
+    } else {
+        $userModel = new User();
+        if ($userModel->findByEmail($email)) {
+            $error = 'Un utilisateur avec cet email existe déjà';
+        } else {
+            $userModel->create($nom, $prenom, $email, $password);
+            header('Location: /game-collection/views/login.php');
+            exit;
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,8 +32,11 @@
     <link rel="stylesheet" href="/game-collection/views/style/common.css">
 </head>
 <body>
-    <form action="/game-collection/register/submit" method="post">
+    <form action="/game-collection/views/register.php" method="post">
         <h1>Inscription</h1>
+        <?php if (isset($error)): ?>
+            <p style="color: red;"><?= htmlspecialchars($error) ?></p>
+        <?php endif; ?>
         <label for="lastname">Nom :</label>
         <input type="text" id="lastname" name="lastname" required>
         

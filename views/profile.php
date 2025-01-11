@@ -28,7 +28,7 @@
 
             <button type="submit">Modifier</button>
             <button type="button" onclick="confirmDelete()">Supprimer mon compte</button>
-            <a href="/game-collection/logout.php" class="logout-button">Se déconnecter</a>
+            <a href="/game-collection/views/login.php" class="logout-button">Se déconnecter</a>
         </form>
     </main>
     <footer>
