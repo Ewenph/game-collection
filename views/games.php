@@ -54,7 +54,13 @@ if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
     $stmt = $db->prepare($query);
     $stmt->execute(['search' => "%$search%", 'id_uti' => $_SESSION['user_id']]);
     $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if (count($games) == 0) {
+        header("Location: add_game.php");
+        exit(); // Assure que le script s'arrête après la redirection
+    }
 }
+
 ?>
 
 <!DOCTYPE html>
