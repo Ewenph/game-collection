@@ -15,9 +15,44 @@ class User {
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
-            exit;
+            exit;  
         }
     }
+
+
+    public function selecInfo() {
+        try {
+            $stmt = $this->db->prepare("
+    SELECT 
+        u.Pren_uti AS Prenom,
+        u.Nom_uti AS Nom,
+        COALESCE(SUM(b.Temps_jeu), 0) AS Total_Heures,
+        (SELECT j2.Nom_jeu 
+         FROM Bibliothèque b2 
+         INNER JOIN Jeu j2 ON b2.Id_jeu = j2.Id_jeu
+         WHERE b2.Id_uti = u.Id_uti 
+         ORDER BY b2.Temps_jeu DESC 
+         LIMIT 1) AS Jeu_Prefere
+    FROM 
+        Utilisateur u
+    LEFT JOIN 
+        Bibliothèque b ON u.Id_uti = b.Id_uti
+    GROUP BY 
+        u.Id_uti
+    ORDER BY 
+        Total_Heures DESC
+    LIMIT 20;  // Ajout de la limite
+");
+
+    
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        } catch (Exception $e) {
+            throw new Exception("Erreur lors de la récupération des données : " . $e->getMessage());
+        }
+    }
+    
 
     public function findById($id) {
         $stmt = $this->db->prepare("SELECT * FROM Utilisateur WHERE Id_uti = :id");
