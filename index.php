@@ -1,68 +1,51 @@
 <?php
 session_start();
 
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+// Models
+include 'models/Game.php';
+include 'models/User.php';
+include 'models/UserGame.php';
 
-switch ($uri) {
+// Controllers
+include 'controllers/GameController.php';
+include 'controllers/HomeController.php';
+include 'controllers/LeaderboardController.php';
+include 'controllers/LoginController.php';
+include 'controllers/RegisterController.php';
+
+$request = $_SERVER['REQUEST_URI'];
+
+switch ($request) {
     case '/':
-    case '/game-collection/':
-    case '/game-collection/home':
-        require_once __DIR__ . '/controllers/HomeController.php';
-        $controller = new HomeController();
-        $controller->index();
+        include 'views/login.php';
         break;
-    case '/game-collection/login':
-        require_once __DIR__ . '/controllers/LoginController.php';
-        $controller = new LoginController();
-        $controller->showLoginForm();
+    case '/login':
+        include 'views/login.php';
         break;
-    case '/game-collection/login/submit':
-        require_once __DIR__ . '/controllers/LoginController.php';
-        $controller = new LoginController();
-        $controller->login();
+    case '/home':
+        include 'views/home.php';
         break;
-    case '/game-collection/register':
-        require_once __DIR__ . '/controllers/RegisterController.php';
-        $controller = new RegisterController();
-        $controller->showRegisterForm();
+    case '/register':
+        include 'views/register.php';
         break;
-    case '/game-collection/register/submit':
-        require_once __DIR__ . '/controllers/RegisterController.php';
-        $controller = new RegisterController();
-        $controller->register();
+    case '/profile':
+        include 'views/profile.php';
         break;
-    case '/game-collection/logout':
-        require_once __DIR__ . '/controllers/LoginController.php';
-        $controller = new LoginController();
-        $controller->logout();
+    case '/games':
+        include 'views/games.php';
         break;
-    case '/game-collection/games':
-        require_once __DIR__ . '/controllers/GameController.php';
-        $controller = new GameController();
-        $controller->index();
+    case '/add_game':
+        include 'views/add_game.php';
         break;
-    case '/game-collection/games/add':
-        require_once __DIR__ . '/controllers/GameController.php';
-        $controller = new GameController();
-        $controller->showAddGameForm();
+    case '/leaderboard':
+        include 'views/leaderboard.php';
         break;
-    case '/game-collection/games/add/submit':
-        require_once __DIR__ . '/controllers/GameController.php';
-        $controller = new GameController();
-        $controller->addGame();
-        break;
-    case '/game-collection/games/delete':
-        require_once __DIR__ . '/controllers/GameController.php';
-        $controller = new GameController();
-        $controller->deleteGame();
-        break;
-    case '/game-collection/leaderboard':
-        require_once __DIR__ . '/controllers/LeaderboardController.php';
-        $controller = new LeaderboardController();
-        $controller->index();
+    case '/modify_game':
+        include 'views/modify_game.php';
         break;
     default:
         http_response_code(404);
-        echo "Page non trouvée";
+        include 'views/404.php';
         break;
 }
+?>

@@ -1,0 +1,142 @@
+/* Global */
+body {
+    font-family: 'Lexend', sans-serif;
+    background-color: #211f2a;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Section Hero (En-tête) */
+.hero {
+    background-image: url('/assets/homepage.png');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 40px;
+    color: white;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Section des Jeux */
+.games-section {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.games-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Grille des Jeux */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes fixes */
+    gap: 20px;
+}
+
+.game-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.game-link:hover .game-card {
+    transform: scale(1.02); /* Effet zoom au survol */
+    transition: transform 0.3s ease;
+}
+
+.game-card {
+    background-color: #252836;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-image-container {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+}
+
+.game-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+.game-image:hover {
+    filter: brightness(1);
+}
+
+.game-details {
+    padding: 15px;
+}
+
+.game-details h3 {
+    margin: 5px 0;
+    font-size: 1.2em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.game-details p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #aaa;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+/* Pied de Page */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    color: gray;
+    font-size: 0.8em;
+}

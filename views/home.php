@@ -41,7 +41,7 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes jeux</title>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/game-collection/views/style/common.css">
+    <link rel="stylesheet" href="/views/style/home.css">
 </head>
 <body>
     <main class="home-page">
@@ -56,7 +56,7 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="games-grid">
                 <?php if (count($games) > 0): ?>
                     <?php foreach ($games as $game): ?>
-                        <a href="/game-collection/views/modify_game.php?id_jeu=<?= htmlspecialchars($game['Id_jeu']) ?>" class="game-link">
+                        <a href="/views/modify_game.php?id_jeu=<?= htmlspecialchars($game['Id_jeu']) ?>" class="game-link">
                             <div class="game-card">
                                 <div class="game-image-container">
                                     <img src="<?= htmlspecialchars($game['Url_jeu']) ?>" alt="<?= htmlspecialchars($game['Nom_jeu']) ?>" class="game-image">

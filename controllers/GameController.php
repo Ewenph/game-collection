@@ -1,17 +1,17 @@
 <?php
 class GameController {
 
-    public function index() {
-        require_once __DIR__ . '/../views/games.php';
-    }
+    // public function index() {
+    //     require_once __DIR__ . '/../views/games.php';
+    // }
 
-    public function showGame() {
-        require_once __DIR__ . '/../views/game.php';
-    }
+    // public function showGame() {
+    //     require_once __DIR__ . '/../views/game.php';
+    // }
 
-    public function showAddGameForm() {
-        require_once __DIR__ . '/../views/add_game.php';
-    }
+    // public function showAddGameForm() {
+    //     require_once __DIR__ . '/../views/add_game.php';
+    // }
 
     public function deleteGame() {
         try {

@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = 'Un utilisateur avec cet email existe déjà';
         } else {
             $userModel->create($nom, $prenom, $email, $password);
-            header('Location: /game-collection/views/login.php');
+            header('Location: /login');
             exit;
         }
     }
@@ -29,10 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <link rel="stylesheet" href="/game-collection/views/style/common.css">
+    <link rel="stylesheet" href="/views/style/common.css">
 </head>
 <body>
-    <form action="/game-collection/views/register.php" method="post">
+    <form action="/register" method="POST">
         <h1>Inscription</h1>
         <?php if (isset($error)): ?>
             <p style="color: red;"><?= htmlspecialchars($error) ?></p>
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="password" id="confirm-password" name="confirm_password" required>
         
         <button type="submit">S'inscrire</button>
-        <a href="/game-collection/views/login.php">Se connecter</a>
+        <a href="/login">Se connecter</a>
     </form>
     <footer>
         Game Collection - 2024 - Tous droits réservés

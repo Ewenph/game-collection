@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/../models/User.php';
 
 class RegisterController {
     private $userModel;
@@ -9,7 +8,7 @@ class RegisterController {
     }
 
     public function showRegisterForm() {
-        require_once __DIR__ . '/../views/register.php';
+        require_once __DIR__ . '/views/register.php';
     }
 
     public function register() {
@@ -25,6 +24,6 @@ class RegisterController {
         }
 
         $this->userModel->create($nom, $prenom, $email, $password);
-        header('Location: /game-collection/login');
+        header('Location: /login');
     }
 }

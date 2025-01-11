@@ -1,6 +1,8 @@
 <?php
-session_start();
-$_SESSION['user_id'] = 3; // Simule un utilisateur connecté pour le test
+if (session_status() == PHP_SESSION_NONE) {
+    session_start(); // Démarre la session si elle n'est pas déjà démarrée
+}
+
 require_once __DIR__ . '/header.php';
 
 // Vérifie si l'utilisateur est connecté
