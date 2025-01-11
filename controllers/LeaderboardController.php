@@ -14,7 +14,7 @@ class LeaderboardController {
     public function selecInfo() {
         try {
             // Connexion à la base de données
-            $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'root', ''); // Modifier user/password selon ta configuration
+            $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'td21-1', 'td21-1'); // Modifier user/password selon ta configuration
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Requête SQL pour récupérer les informations des joueurs

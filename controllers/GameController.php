@@ -15,7 +15,7 @@ class GameController {
 
     public function deleteGame() {
         try {
-            $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'root', ''); // Modifier user/password selon ta configuration
+            $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'td21-1', 'td21-1'); // Modifier user/password selon ta configuration
 
             $id = $_GET['id'];
 
@@ -32,7 +32,7 @@ class GameController {
 
     public function addGame() {
         try {
-            $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'root', ''); // Modifier user/password selon ta configuration
+            $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'td21-1', 'td21-1'); // Modifier user/password selon ta configuration
 
             // Récupération des champs du formulaire
             $nom = htmlspecialchars($_POST['nom']);
@@ -97,7 +97,7 @@ class GameController {
 
     public function modifyGame($id_jeu) {
         try {
-            $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'root', ''); // Modifier user/password selon ta configuration
+            $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'td21-1', 'td21-1'); // Modifier user/password selon ta configuration
     
             // Récupération des champs du formulaire
             $nom = htmlspecialchars($_POST['nom']);

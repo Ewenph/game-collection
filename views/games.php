@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 
 // Connexion à la base de données
 try {
-    $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'root', ''); // Modifier user/password
+    $db = new PDO('mysql:host=localhost;dbname=collection_jeux;charset=utf8', 'td21-1', 'td21-1'); // Modifier user/password
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
