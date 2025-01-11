@@ -1,86 +1,123 @@
+/* Global */
 body {
     font-family: 'Lexend', sans-serif;
     background-color: #211f2a;
     color: white;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
-header {
+/* Section Hero (En-tête) */
+.hero {
+    background-image: url('/game-collection/assets/homepage.png');
+    background-size: cover;
+    background-position: center;
+    height: 400px; /* Augmente la hauteur de l'en-tête */
+    position: relative;
+    display: flex;
+    align-items: center; /* Centre verticalement le contenu */
+    justify-content: flex-start; /* Aligne le contenu à gauche */
+    padding-left: 40px; /* Décale le texte vers la gauche */
+    color: white;
+}
+
+.hero::after {
+    content: '';
     position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Ajoute un overlay pour réduire la luminosité */
+    z-index: 1;
 }
 
-form {
-    background-color: #252836;
-    padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    width: 300px;
-    text-align: center;
+.hero-content {
+    position: relative;
+    z-index: 2; /* Place le texte au-dessus de l'overlay */
+    max-width: 600px; /* Limite la largeur du texte */
 }
 
-h1 {
-    color: white;
+.hero-content h1 {
+    font-size: 3em; /* Augmente la taille du titre */
+    margin: 0 0 10px 0;
+    line-height: 1.2; /* Réduit l'espacement vertical */
+}
+
+.hero-content p {
     font-size: 1.5em;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Section des Jeux */
+.games-section {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.games-section h2 {
+    font-size: 2em;
     margin-bottom: 20px;
 }
 
-label {
-    font-size: 0.9em;
-    display: block;
-    margin: 10px 0 5px;
-    text-align: left;
+/* Grille des Jeux */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    font-size: 1em;
-    color: #000;
-    box-sizing: border-box;
-}
-
-button {
-    background-color: #6757d6;
+.game-card {
+    background-color: #252836;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: left; /* Aligne le texte à gauche */
     color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    font-size: 1em;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-image-container {
+    position: relative;
+    overflow: hidden;
+    height: 200px; /* Augmente la hauteur des images */
+}
+
+.game-image {
     width: 100%;
-    margin-top: 15px;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8); /* Réduction du gamma */
+    transition: filter 0.3s ease;
 }
 
-button:hover {
-    background-color: #533ccc;
+.game-image:hover {
+    filter: brightness(1); /* Rétablit l'image normale au survol */
 }
 
-a {
-    color: #6c4dfc;
-    text-decoration: none;
-    display: block;
-    margin-top: 10px;
-    font-size: 0.9em;
+.game-details {
+    padding: 15px;
 }
 
-a:hover {
-    text-decoration: underline;
+.game-details h3,
+.game-details p {
+    margin: 5px 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limite à trois lignes */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
 }
 
+/* Pied de Page */
 footer {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
     text-align: center;
-    font-size: 0.8em;
+    padding: 10px 0;
     color: gray;
+    font-size: 0.8em;
 }
