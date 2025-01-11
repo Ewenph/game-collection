@@ -18,7 +18,12 @@ try {
 // Récupération des jeux de l'utilisateur
 $user_id = $_SESSION['user_id'];
 $query = "
-    SELECT j.Nom_jeu, j.Url_jeu, p.Nom_plateforme, b.Temps_jeu 
+    SELECT 
+        j.Id_jeu,
+        j.Nom_jeu, 
+        j.Url_jeu, 
+        GROUP_CONCAT(p.Nom_plateforme SEPARATOR ', ') AS Plateformes, 
+        b.Temps_jeu 
     FROM Bibliothèque b
     JOIN Jeu j ON b.Id_jeu = j.Id_jeu
     LEFT JOIN Jeu_Plateforme jp ON j.Id_jeu = jp.Id_jeu
@@ -53,16 +58,18 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="games-grid">
                 <?php if (count($games) > 0): ?>
                     <?php foreach ($games as $game): ?>
-                        <div class="game-card">
-                            <div class="game-image-container">
-                                <img src="<?= htmlspecialchars($game['Url_jeu']) ?>" alt="<?= htmlspecialchars($game['Nom_jeu']) ?>" class="game-image">
+                        <a href="/game-collection/views/modify_game.php?id_jeu=<?= htmlspecialchars($game['Id_jeu']) ?>" class="game-link">
+                            <div class="game-card">
+                                <div class="game-image-container">
+                                    <img src="<?= htmlspecialchars($game['Url_jeu']) ?>" alt="<?= htmlspecialchars($game['Nom_jeu']) ?>" class="game-image">
+                                </div>
+                                <div class="game-details">
+                                    <h3><?= htmlspecialchars($game['Nom_jeu']) ?></h3>
+                                    <p><?= htmlspecialchars($game['Plateformes'] ?: 'Plateformes inconnues') ?></p>
+                                    <p><?= htmlspecialchars($game['Temps_jeu']) ?> h</p>
+                                </div>
                             </div>
-                            <div class="game-details">
-                                <h3><?= htmlspecialchars($game['Nom_jeu']) ?></h3>
-                                <p><?= htmlspecialchars($game['Nom_plateforme'] ?: 'Plateforme inconnue') ?></p>
-                                <p><?= htmlspecialchars($game['Temps_jeu']) ?> h</p>
-                            </div>
-                        </div>
+                        </a>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <p>Vous n'avez pas encore ajouté de jeux à votre collection.</p>

@@ -12,12 +12,12 @@ body {
     background-image: url('/game-collection/assets/homepage.png');
     background-size: cover;
     background-position: center;
-    height: 400px; /* Augmente la hauteur de l'en-tête */
+    height: 400px;
     position: relative;
     display: flex;
-    align-items: center; /* Centre verticalement le contenu */
-    justify-content: flex-start; /* Aligne le contenu à gauche */
-    padding-left: 40px; /* Décale le texte vers la gauche */
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 40px;
     color: white;
 }
 
@@ -28,20 +28,20 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Ajoute un overlay pour réduire la luminosité */
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2; /* Place le texte au-dessus de l'overlay */
-    max-width: 600px; /* Limite la largeur du texte */
+    z-index: 2;
+    max-width: 600px;
 }
 
 .hero-content h1 {
-    font-size: 3em; /* Augmente la taille du titre */
+    font-size: 3em;
     margin: 0 0 10px 0;
-    line-height: 1.2; /* Réduit l'espacement vertical */
+    line-height: 1.2;
 }
 
 .hero-content p {
@@ -65,8 +65,19 @@ body {
 /* Grille des Jeux */
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes fixes */
     gap: 20px;
+}
+
+.game-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.game-link:hover .game-card {
+    transform: scale(1.02); /* Effet zoom au survol */
+    transition: transform 0.3s ease;
 }
 
 .game-card {
@@ -74,7 +85,7 @@ body {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    text-align: left; /* Aligne le texte à gauche */
+    text-align: left;
     color: white;
     display: flex;
     flex-direction: column;
@@ -84,33 +95,42 @@ body {
 .game-image-container {
     position: relative;
     overflow: hidden;
-    height: 200px; /* Augmente la hauteur des images */
+    height: 200px;
 }
 
 .game-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.8); /* Réduction du gamma */
+    filter: brightness(0.8);
     transition: filter 0.3s ease;
 }
 
 .game-image:hover {
-    filter: brightness(1); /* Rétablit l'image normale au survol */
+    filter: brightness(1);
 }
 
 .game-details {
     padding: 15px;
 }
 
-.game-details h3,
-.game-details p {
+.game-details h3 {
     margin: 5px 0;
+    font-size: 1.2em;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
-    white-space: normal;
+}
+
+.game-details p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #aaa;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
 }
 
 /* Pied de Page */
