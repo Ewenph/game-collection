@@ -3,6 +3,11 @@ function routeRequest() {
     $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
     switch ($uri) {
+        case '/':
+            require_once __DIR__ . '/controllers/HomeController.php';
+            $controller = new HomeController();
+            $controller->index();
+            break;
         case '/game-collection/':
             require_once __DIR__ . '/controllers/HomeController.php';
             $controller = new HomeController();

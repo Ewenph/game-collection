@@ -11,5 +11,7 @@
             "email": "ewen.pichoff@gmail.com"
         }
     ],
+    "description": "",
+    "license": "MIT",
     "require": {}
 }
