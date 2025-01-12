@@ -93,8 +93,11 @@ class User {
             GROUP BY 
                 u.Id_uti
             ORDER BY 
-                Total_Heures DESC 
+                Total_Heures DESC, 
+                Nom ASC, 
+                Prenom ASC
             LIMIT 20;
+        ");
         ");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
