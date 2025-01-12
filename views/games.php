@@ -62,7 +62,6 @@ require_once __DIR__ . '/header.php';
             </div>
         </section>
     <?php else: ?>
-        <p>Aucun jeu trouvé pour cette recherche.</p>
     <?php endif; ?>
 </div>
 <footer>
