@@ -17,7 +17,9 @@ require_once __DIR__ . '/header.php';
 </head>
 <body>
     <div class="container">
+    <?php var_dump($game); ?>
         <?php if ($game): ?>
+        
             <h1>Modifier le jeu : <?= htmlspecialchars($game['Nom_jeu']) ?></h1>
             <p><?= htmlspecialchars($game['Desc_jeu'] ?? 'Pas de description disponible') ?></p>
             <p>Temps passé : <?= htmlspecialchars($game['Temps_jeu']) ?> h</p>
