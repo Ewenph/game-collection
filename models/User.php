@@ -10,6 +10,7 @@ class User {
         $this->connect_to_database();
     }
 
+    // Connexion à la base de données
     private function connect_to_database() {
         $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
         $dotenv->load();
@@ -26,18 +27,21 @@ class User {
         }
     }
 
+    // Récupérer un utilisateur par son ID
     public function findById($id) {
         $stmt = $this->db->prepare("SELECT * FROM Utilisateur WHERE Id_uti = :id");
         $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Récupérer un utilisateur par son email
     public function findByEmail($email) {
         $stmt = $this->db->prepare("SELECT * FROM Utilisateur WHERE Mail_uti = :email");
         $stmt->execute(['email' => $email]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Créer un nouvel utilisateur
     public function create($nom, $prenom, $email, $password) {
         $stmt = $this->db->prepare("
             INSERT INTO Utilisateur (Nom_uti, Pren_uti, Mail_uti, Mdp_uti) 
@@ -51,11 +55,13 @@ class User {
         ]);
     }
 
+    // Supprimer un utilisateur
     public function delete($id) {
         $stmt = $this->db->prepare("DELETE FROM Utilisateur WHERE Id_uti = :id");
         $stmt->execute(['id' => $id]);
     }
 
+    // Mettre à jour les informations d'un utilisateur
     public function update($id, $nom, $prenom, $email, $password) {
         $stmt = $this->db->prepare("
             UPDATE Utilisateur 
@@ -71,6 +77,7 @@ class User {
         ]);
     }
 
+    // Récupérer le classement des utilisateurs
     public function getLeaderboard() {
         $stmt = $this->db->prepare("
             SELECT 

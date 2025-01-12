@@ -10,6 +10,7 @@ class UserGame {
         $this->connect_to_database();
     }
 
+    // Connexion à la base de données
     private function connect_to_database() {
         $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
         $dotenv->load();
@@ -26,21 +27,25 @@ class UserGame {
         }
     }
 
+    // Ajouter un jeu à la bibliothèque de l'utilisateur
     public function addGameToUser($userId, $gameId) {
         $stmt = $this->db->prepare("INSERT INTO Bibliothèque (Id_jeu, Id_uti, Temps_jeu) VALUES (:gameId, :userId, 0)");
         $stmt->execute(['gameId' => $gameId, 'userId' => $userId]);
     }
 
+    // Supprimer un jeu de la bibliothèque de l'utilisateur
     public function removeGameFromUser($userId, $gameId) {
         $stmt = $this->db->prepare("DELETE FROM Bibliothèque WHERE Id_jeu = :gameId AND Id_uti = :userId");
         $stmt->execute(['gameId' => $gameId, 'userId' => $userId]);
     }
 
+    // Mettre à jour le temps de jeu pour un utilisateur et un jeu
     public function updateGameTime($userId, $gameId, $time) {
         $stmt = $this->db->prepare("UPDATE Bibliothèque SET Temps_jeu = :time WHERE Id_jeu = :gameId AND Id_uti = :userId");
         $stmt->execute(['time' => $time, 'gameId' => $gameId, 'userId' => $userId]);
     }
 
+    // Récupérer les jeux de l'utilisateur
     public function getUserGames($userId) {
         $stmt = $this->db->prepare("
             SELECT j.*, b.Temps_jeu, GROUP_CONCAT(p.Nom_plateforme SEPARATOR ', ') AS Plateformes

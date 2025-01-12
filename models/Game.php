@@ -10,6 +10,7 @@ class Game {
         $this->connect_to_database();
     }
 
+    // Connexion à la base de données
     private function connect_to_database() {
         $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
         $dotenv->load();
@@ -26,17 +27,20 @@ class Game {
         }
     }
 
+    // Récupérer tous les jeux
     public function findAll() {
         $stmt = $this->db->query("SELECT * FROM Jeu");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // Récupérer un jeu par son ID
     public function findById($id) {
         $stmt = $this->db->prepare("SELECT * FROM Jeu WHERE Id_jeu = :id");
         $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Rechercher des jeux par nom
     public function search($search, $user_id) {
         $query = "
             SELECT j.Id_jeu, j.Nom_jeu, j.Desc_jeu, j.Url_jeu, GROUP_CONCAT(p.Nom_plateforme SEPARATOR ', ') AS Plateformes,
@@ -57,6 +61,7 @@ class Game {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // Créer un nouveau jeu
     public function create($data) {
         $stmt = $this->db->prepare("
             INSERT INTO Jeu (Nom_jeu, Editeur_jeu, Date_sortie_jeu, Desc_jeu, id_multiplateforme, Url_jeu, Url_site) 
@@ -66,6 +71,7 @@ class Game {
         return $this->db->lastInsertId();
     }
 
+    // Mettre à jour un jeu existant
     public function update($id, $data) {
         $data['id'] = $id;
         $stmt = $this->db->prepare("
@@ -76,11 +82,13 @@ class Game {
         $stmt->execute($data);
     }
 
+    // Supprimer un jeu
     public function delete($id) {
         $stmt = $this->db->prepare("DELETE FROM Jeu WHERE Id_jeu = :id");
         $stmt->execute(['id' => $id]);
     }
 
+    // Ajouter des plateformes à un jeu
     public function addPlatforms($id_jeu, $plateformes) {
         foreach ($plateformes as $plateforme) {
             $stmt = $this->db->prepare("SELECT Id_plateforme FROM Plateforme WHERE Nom_plateforme = :plateforme");
@@ -102,11 +110,13 @@ class Game {
         }
     }
 
+    // Supprimer les plateformes d'un jeu
     public function removePlatforms($id_jeu) {
         $stmt = $this->db->prepare("DELETE FROM Jeu_Plateforme WHERE Id_jeu = :id_jeu");
         $stmt->execute(['id_jeu' => $id_jeu]);
     }
 
+    // Récupérer le nom d'un jeu par son ID
     public function getGameName($id_jeu) {
         $stmt = $this->db->prepare("SELECT Nom_jeu FROM Jeu WHERE Id_jeu = :id_jeu");
         $stmt->execute(['id_jeu' => $id_jeu]);
