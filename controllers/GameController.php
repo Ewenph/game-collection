@@ -90,8 +90,12 @@ class GameController {
             exit;
         }
 
-        $id_jeu = (int)$_GET['id'];
-        $game = $this->gameModel->findById($id_jeu);
+        if (isset($_GET['id'])) {
+            $id_jeu = (int)$_GET['id'];
+            $game = $this->gameModel->findById($id_jeu);
+        } else {
+            $game = false;
+        }
 
         require_once __DIR__ . '/../views/modify_game.php';
     }
