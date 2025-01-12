@@ -68,7 +68,7 @@ class Game {
             VALUES (:nom, :editeur, :sortie, :description, :id_multiplateforme, :url_jeu, :url_site)
         ");
         $stmt->execute($data);
-        return $stmt->lastInsertId();
+        return $this->db->lastInsertId(); // Correction ici
     }
 
     // Mettre à jour un jeu existant

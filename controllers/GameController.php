@@ -63,6 +63,9 @@ class GameController {
             $id_jeu = $this->gameModel->create($data);
             $this->gameModel->addPlatforms($id_jeu, $_POST['platforms'] ?? []);
 
+            // Ajouter le jeu à la bibliothèque de l'utilisateur
+            $this->userGameModel->addGameToUser($_SESSION['user_id'], $id_jeu);
+
             header("Location: /add_game?success=1");
             exit;
         }
