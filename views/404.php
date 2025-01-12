@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h1>404</h1>
-        <p>Oups! La page que vous recherchez n'existe pas.</p>
+        <p>Oups ! La page que vous recherchez n'existe pas.</p>
         <a href="/home">Retour à l'accueil</a>
     </div>
 </body>
