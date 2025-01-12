@@ -7,10 +7,12 @@ class RegisterController {
         $this->userModel = new User();
     }
 
+    // Affiche le formulaire d'inscription
     public function showRegisterForm() {
         require_once __DIR__ . '/../views/register.php';
     }
 
+    // Gère l'inscription de l'utilisateur
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nom = $_POST['lastname'];

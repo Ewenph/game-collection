@@ -8,6 +8,7 @@ class LeaderboardController {
         $this->userModel = new User();
     }
 
+    // Affiche le classement des utilisateurs
     public function index() {
         $users = $this->userModel->getLeaderboard();
         require_once __DIR__ . '/../views/leaderboard.php';

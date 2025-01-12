@@ -11,6 +11,7 @@ class GameController {
         $this->userGameModel = new UserGame();
     }
 
+    // Affiche la page des jeux avec les suggestions et les résultats de recherche
     public function index() {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -38,6 +39,7 @@ class GameController {
         require_once __DIR__ . '/../views/games.php';
     }
 
+    // Ajoute un nouveau jeu à la bibliothèque
     public function addGame() {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -68,6 +70,7 @@ class GameController {
         require_once __DIR__ . '/../views/add_game.php';
     }
 
+    // Modifie les informations d'un jeu existant
     public function modifyGame() {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -114,6 +117,7 @@ class GameController {
         require_once __DIR__ . '/../views/modify_game.php';
     }
 
+    // Met à jour le temps de jeu pour un utilisateur et un jeu
     private function updateGameTime() {
         $id_jeu = (int)$_POST['id_jeu'];
         $user_id = $_SESSION['user_id'];
@@ -125,6 +129,7 @@ class GameController {
         exit;
     }
 
+    // Supprime un jeu de la bibliothèque d'un utilisateur
     private function deleteGameFromLibrary() {
         $id_jeu = (int)$_POST['id_jeu'];
         $user_id = $_SESSION['user_id'];
@@ -135,6 +140,7 @@ class GameController {
         exit;
     }
 
+    // Ajoute un jeu à la bibliothèque d'un utilisateur
     public function addToLibrary() {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();

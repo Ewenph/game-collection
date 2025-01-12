@@ -11,6 +11,7 @@ class HomeController {
         $this->userGameModel = new UserGame();
     }
 
+    // Affiche la page d'accueil avec les jeux de l'utilisateur
     public function index() {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();

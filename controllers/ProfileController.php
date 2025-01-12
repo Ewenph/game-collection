@@ -7,6 +7,7 @@ class ProfileController {
         $this->userModel = new User();
     }
 
+    // Affiche le profil de l'utilisateur
     public function showProfile() {
         if (session_status() == PHP_SESSION_NONE) {
             session_start(); // Démarre la session si elle n'est pas déjà démarrée
@@ -25,6 +26,7 @@ class ProfileController {
         require_once __DIR__ . '/../views/profile.php';
     }
 
+    // Met à jour le profil de l'utilisateur
     public function updateProfile() {
         if (session_status() == PHP_SESSION_NONE) {
             session_start(); // Démarre la session si elle n'est pas déjà démarrée
@@ -83,4 +85,4 @@ class ProfileController {
     
         require_once __DIR__ . '/../views/profile.php';
     }
-}    
+}
