@@ -10,6 +10,7 @@ body {
     padding: 0;
 }
 
+/* Conteneur principal */
 .container {
     max-width: 1200px;
     margin: 20px auto;
