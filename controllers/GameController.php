@@ -106,32 +106,15 @@ class GameController {
         }
     
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $user_id = $_SESSION['user_id'];
-            $game_id = (int) $_POST['id_jeu'];
+            $gameId = (int)$_POST['game_id'];
+            $userId = $_SESSION['user_id'];
     
-            $stmt = $this->db->prepare("
-                SELECT COUNT(*) 
-                FROM Bibliothèque 
-                WHERE Id_uti = :user_id AND Id_jeu = :game_id
-            ");
-            $stmt->execute([
-                'user_id' => $user_id,
-                'game_id' => $game_id
-            ]);
-    
-            if ($stmt->fetchColumn() == 0) {
-                $stmt = $this->db->prepare("
-                    INSERT INTO Bibliothèque (Id_uti, Id_jeu) 
-                    VALUES (:user_id, :game_id)
-                ");
-                $stmt->execute([
-                    'user_id' => $user_id,
-                    'game_id' => $game_id
-                ]);
-    
-                header('Location: /games?success=1');
-            } else {
-                header('Location: /games?error=already_owned');
+            $userGame = new UserGame();
+            try {
+                $userGame->addGameToUser($userId, $gameId);
+                header("Location: /games?success=1");
+            } catch (Exception $e) {
+                header("Location: /games?error=1");
             }
             exit;
         }
