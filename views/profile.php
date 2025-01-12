@@ -14,7 +14,7 @@ require_once __DIR__ . '/header.php';
     <link rel="stylesheet" href="/views/style/common.css">
 </head>
 <body>
-    <main style="padding-top: 60px;"> <!-- Ajout de padding-top pour éviter le chevauchement -->
+    <main>
         <form action="/profile" method="POST">
             <h1>Mon profil</h1>
             <?php if (isset($error)): ?>
