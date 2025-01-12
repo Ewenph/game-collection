@@ -33,13 +33,13 @@ class ProfileController {
             header('Location: /login');
             exit;
         }
-
+    
         $user = $this->userModel->findById($_SESSION['user_id']);
         if (!$user) {
             header('Location: /login');
             exit;
         }
-
+    
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['delete_account'])) {
                 $this->userModel->delete($_SESSION['user_id']);
@@ -47,22 +47,38 @@ class ProfileController {
                 header('Location: /register');
                 exit;
             } else {
-                $lastname = $_POST['lastname'];
-                $firstname = $_POST['firstname'];
-                $email = $_POST['email'];
+                $lastname = trim($_POST['lastname']);
+                $firstname = trim($_POST['firstname']);
+                $email = trim($_POST['email']);
                 $password = $_POST['password'];
                 $confirm_password = $_POST['confirm_password'];
-
-                if ($password === $confirm_password) {
+    
+                // Vérification des longueurs
+                $errors = [];
+                if (strlen($lastname) > 100) {
+                    $errors[] = 'Le nom ne peut pas dépasser 100 caractères.';
+                }
+                if (strlen($firstname) > 100) {
+                    $errors[] = 'Le prénom ne peut pas dépasser 100 caractères.';
+                }
+                if (strlen($email) > 100) {
+                    $errors[] = 'L\'adresse email ne peut pas dépasser 100 caractères.';
+                }
+    
+                // Vérification des mots de passe
+                if ($password !== $confirm_password) {
+                    $errors[] = 'Les mots de passe ne correspondent pas.';
+                }
+    
+                if (empty($errors)) {
+                    // Mettre à jour l'utilisateur si tout est valide
                     $this->userModel->update($_SESSION['user_id'], $lastname, $firstname, $email, $password);
                     header('Location: /profile');
                     exit;
-                } else {
-                    $error = 'Les mots de passe ne correspondent pas';
                 }
             }
         }
-
+    
         require_once __DIR__ . '/../views/profile.php';
     }
-}
+}    
