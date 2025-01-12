@@ -6,8 +6,7 @@ class LeaderboardController {
     private $password = 'BJCkZcFAIUeJqL4E';
 
     public function index() {
-        $userModel = new User();
-        $users = $userModel->selecInfo();
+        $users = $this->selecInfo();
 
         // Debug temporaire pour vérifier le contenu de $users
         if (empty($users)) {
