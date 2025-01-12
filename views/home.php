@@ -36,7 +36,7 @@ require_once __DIR__ . '/header.php';
                                 </div>
                                 <div class="game-details">
                                     <h3><?= htmlspecialchars($game['Nom_jeu']) ?></h3>
-                                    <p><?= htmlspecialchars($game['Plateformes'] ?: 'Plateformes inconnues') ?></p>
+                                    <p><?= isset($game['Plateformes']) ? htmlspecialchars($game['Plateformes']) : 'Plateformes inconnues' ?></p>
                                     <p><?= htmlspecialchars($game['Temps_jeu']) ?> h</p>
                                 </div>
                             </div>
