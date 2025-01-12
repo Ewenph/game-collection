@@ -103,6 +103,7 @@ class GameController {
         if (isset($_GET['id'])) {
             $id_jeu = (int)$_GET['id'];
             $game = $this->gameModel->findById($id_jeu);
+            $game['Temps_jeu'] = $this->gameModel->getPlayTime($id_jeu, $_SESSION['user_id']);
         } else {
             $game = false;
         }
@@ -115,7 +116,7 @@ class GameController {
         $user_id = $_SESSION['user_id'];
         $time = (int)$_POST['temps'];
 
-        $this->gameModel->addPlayTime($id_jeu, $user_id, $time);
+        $this->gameModel->setPlayTime($id_jeu, $user_id, $time);
 
         header("Location: /modify_game?id=$id_jeu&success=1");
         exit;

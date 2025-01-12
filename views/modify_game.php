@@ -21,14 +21,14 @@ require_once __DIR__ . '/header.php';
             <section>
                 <h1><?= htmlspecialchars($game['Nom_jeu']) ?></h1>
                 <p><?= htmlspecialchars($game['Desc_jeu'] ?? 'Pas de description disponible') ?></p>
-                <p>Temps passé : <?= isset($game['Temps_jeu']) ? htmlspecialchars($game['Temps_jeu']) : '0' ?> h</p>
+                <p>Temps passé : <?= htmlspecialchars($game['Temps_jeu']) ?> h</p>
                 
-                <h2>Ajouter du temps passé sur le jeu</h2>
+                <h2>Mettre à jour le temps passé sur le jeu</h2>
                 <form action="/modify_game" method="POST">
                     <label for="temps">Temps passé sur le jeu</label>
-                    <input type="number" id="temps" name="temps" value="<?= isset($game['Temps_jeu']) ? htmlspecialchars($game['Temps_jeu']) : '0' ?>" min="1" required>
+                    <input type="number" id="temps" name="temps" value="<?= htmlspecialchars($game['Temps_jeu']) ?>" min="1" required>
                     <input type="hidden" name="id_jeu" value="<?= htmlspecialchars($game['Id_jeu']) ?>">
-                    <button type="submit" name="update_time">Ajouter</button>
+                    <button type="submit" name="update_time">Mettre à jour</button>
                 </form>
 
                 <form action="/modify_game" method="POST">

@@ -129,34 +129,18 @@ class Game {
         return $result ? (int)$result['Temps_jeu'] : 0; // Retourne 0 si pas trouvé
     }
 
-    // Ajouter du temps de jeu pour un utilisateur et un jeu
-    public function addPlayTime($id_jeu, $user_id, $hours) {
-        $currentTime = $this->getPlayTime($id_jeu, $user_id);
-
-        if ($currentTime !== null) {
-            // Mettre à jour le temps si déjà enregistré
-            $stmt = $this->db->prepare("
-                UPDATE Bibliothèque 
-                SET Temps_jeu = :new_time 
-                WHERE Id_jeu = :id_jeu AND Id_uti = :user_id
-            ");
-            $stmt->execute([
-                'new_time' => $currentTime + $hours,
-                'id_jeu' => $id_jeu,
-                'user_id' => $user_id
-            ]);
-        } else {
-            // Insérer un nouveau temps si inexistant
-            $stmt = $this->db->prepare("
-                INSERT INTO Bibliothèque (Id_jeu, Id_uti, Temps_jeu) 
-                VALUES (:id_jeu, :user_id, :hours)
-            ");
-            $stmt->execute([
-                'id_jeu' => $id_jeu,
-                'user_id' => $user_id,
-                'hours' => $hours
-            ]);
-        }
+    // Mettre à jour le temps de jeu pour un utilisateur et un jeu
+    public function setPlayTime($id_jeu, $user_id, $hours) {
+        $stmt = $this->db->prepare("
+            UPDATE Bibliothèque 
+            SET Temps_jeu = :hours 
+            WHERE Id_jeu = :id_jeu AND Id_uti = :user_id
+        ");
+        $stmt->execute([
+            'hours' => $hours,
+            'id_jeu' => $id_jeu,
+            'user_id' => $user_id
+        ]);
     }
 
     // Supprimer un jeu de la bibliothèque d'un utilisateur
