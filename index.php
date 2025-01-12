@@ -17,16 +17,19 @@ $request = $_SERVER['REQUEST_URI'];
 
 switch ($request) {
     case '/':
-        include 'views/login.php';
+        $controller = new LoginController();
+        $controller->showLoginForm();
         break;
     case '/login':
-        include 'views/login.php';
+        $controller = new LoginController();
+        $controller->login();
         break;
     case '/home':
         include 'views/home.php';
         break;
     case '/register':
-        include 'views/register.php';
+        $controller = new RegisterController();
+        $controller->register();
         break;
     case '/profile':
         include 'views/profile.php';
