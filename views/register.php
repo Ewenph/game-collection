@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="password" id="confirm-password" name="confirm_password" required>
         
         <button type="submit">S'inscrire</button>
-        <a href="/login">Se connecter</a>
+        <a href="/login" class="logout-spacing">Se connecter</a>
     </form>
     <footer>
         Game Collection - 2025 - Tous droits réservés

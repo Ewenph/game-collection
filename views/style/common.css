@@ -75,10 +75,6 @@ a {
     font-size: 0.9em;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
 footer {
     position: absolute;
     bottom: 10px;
