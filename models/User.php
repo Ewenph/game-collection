@@ -98,7 +98,6 @@ class User {
                 Prenom ASC
             LIMIT 20;
         ");
-        ");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
