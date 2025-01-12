@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../controllers/LeaderboardController.php';
 
 $controller = new LeaderboardController();
-$users = $controller->selecInfo();
+$controller->index();
 
 require_once __DIR__ . '/header.php';
 ?>
