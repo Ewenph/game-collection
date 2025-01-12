@@ -24,6 +24,12 @@ require_once __DIR__ . '/header.php';
         <button type="submit">RECHERCHER</button>
     </form>
 
+    <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+    <div class="message success">Le jeu a été ajouté à votre bibliothèque avec succès !</div>
+    <?php elseif (isset($_GET['error']) && $_GET['error'] == 'already_owned'): ?>
+        <div class="message error">Ce jeu est déjà dans votre bibliothèque.</div>
+    <?php endif; ?>
+
     <?php if (!empty($games)): ?>
         <h2>Résultats de la recherche</h2>
         <div class="games-grid">
