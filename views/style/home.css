@@ -116,7 +116,7 @@ body {
 }
 
 .game-details h3 {
-    margin: 5px 0;
+    margin: 10px 0;
     font-size: 1.2em;
     overflow: hidden;
     display: -webkit-box;
@@ -125,7 +125,7 @@ body {
 }
 
 .game-details p {
-    margin: 5px 0;
+    margin: 10px 0;
     font-size: 0.9em;
     color: #aaa;
     overflow: hidden;
