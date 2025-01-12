@@ -70,4 +70,33 @@ class User {
             'id' => $id
         ]);
     }
+
+    public function getLeaderboard() {
+        $stmt = $this->db->prepare("
+            SELECT 
+                u.Pren_uti AS Prenom,
+                u.Nom_uti AS Nom,
+                SUM(b.Temps_jeu) AS Total_Heures,
+                j.Nom_jeu AS Jeu_Prefere
+            FROM 
+                Utilisateur u
+            LEFT JOIN 
+                Bibliothèque b ON u.Id_uti = b.Id_uti
+            LEFT JOIN 
+                Jeu j ON b.Id_jeu = j.Id_jeu
+            WHERE 
+                b.Temps_jeu = (
+                    SELECT MAX(b2.Temps_jeu) 
+                    FROM Bibliothèque b2 
+                    WHERE b2.Id_uti = u.Id_uti
+                )
+            GROUP BY 
+                u.Id_uti
+            ORDER BY 
+                Total_Heures DESC 
+            LIMIT 20;
+        ");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
