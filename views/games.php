@@ -40,12 +40,7 @@ require_once __DIR__ . '/header.php';
                         <h3><?= htmlspecialchars($game['Nom_jeu']) ?></h3>
                         <p><?= htmlspecialchars($game['Plateformes'] ?: 'Aucune plateforme') ?></p>
                         <p class="description"><?= htmlspecialchars($game['Desc_jeu'] ?: 'Pas de description') ?></p>
-                        <form action="/games" method="POST">
-                            <input type="hidden" name="id_jeu" value="<?= $game['Id_jeu'] ?>">
-                            <?php if ($game['Possede']): ?>
-                                <button type="button" class="add-button disabled" disabled>Déjà possédé</button>
-                            <?php else: ?>
-                                <form action="/add_to_library" method="POST">
+                               <form action="/add_to_library" method="POST">
                                     <input type="hidden" name="id_jeu" value="<?= $game['Id_jeu'] ?>">
                                     <?php if ($game['Possede']): ?>
                                         <button type="button" class="add-button disabled" disabled>Déjà possédé</button>
@@ -53,7 +48,6 @@ require_once __DIR__ . '/header.php';
                                         <button type="submit" class="add-button">AJOUTER À LA BIBLIOTHÈQUE</button>
                                     <?php endif; ?>
                                 </form>
-                            <?php endif; ?>
                         </form>
                     </div>
                 </div>
