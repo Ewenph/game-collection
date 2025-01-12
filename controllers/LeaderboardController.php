@@ -59,7 +59,7 @@ class LeaderboardController {
                     u.Id_uti
                 ORDER BY 
                     Total_Heures DESC 
-                    LIMIT 20;
+                LIMIT 20;
             ");
 
             $stmt->execute();
