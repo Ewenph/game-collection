@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <a href="/register">S'inscrire</a>
     </form>
     <footer>
-        Game Collection - 2024 - Tous droits réservés
+        Game Collection - 2025 - Tous droits réservés
     </footer>
 </body>
 </html>

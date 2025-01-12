@@ -123,9 +123,8 @@ if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
             <?php endif; ?>
         </div>
     </div>
-
     <footer>
-        Game Collection - 2023 - Tous droits réservés
+        Game Collection - 2025 - Tous droits réservés
     </footer>
 </body>
 </html>

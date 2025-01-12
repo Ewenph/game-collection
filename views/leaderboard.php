@@ -16,13 +16,13 @@ require_once __DIR__ . '/header.php';
 </head>
 <body>
 <main>
-    <h1>Classement des utilisateurs</h1>
+    <h1>Classement des temps passés</h1>
     <table>
         <thead>
             <tr>
-                <th>Utilisateur</th>
-                <th>Temps de jeu total</th>
-                <th>Jeu préféré</th>
+                <th>Joueur</th>
+                <th>Temps passés</th>
+                <th>Jeu favori</th>
             </tr>
         </thead>
         <tbody>
@@ -36,8 +36,8 @@ require_once __DIR__ . '/header.php';
         </tbody>
     </table>
 </main>
-<footer>
-    Game Collection - 2024 - Tous droits réservés
-</footer>
+    <footer>
+        Game Collection - 2025 - Tous droits réservés
+    </footer>
 </body>
 </html>

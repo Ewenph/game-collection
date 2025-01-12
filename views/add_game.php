@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <footer>
-        Game Collection - 2023 - Tous droits réservés
+        Game Collection - 2025 - Tous droits réservés
     </footer>
 </body>
 </html>

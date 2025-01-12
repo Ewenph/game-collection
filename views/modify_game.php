@@ -40,9 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 </main>
 </body>
-
-    <footer>
-        Game Collection - 2023 - Tous droits réservés
+<footer>
+        Game Collection - 2025 - Tous droits réservés
     </footer>
 </body>
 </html>
