@@ -26,12 +26,38 @@ nav ul li {
 
 nav ul li a {
     color: var(--text-color);
-    text-decoration: none;
+    text-decoration: none; /* Supprime le soulignement de base */
     font-size: 1em;
+    position: relative; /* Nécessaire pour les pseudo-éléments */
+    transition: color 0.3s ease; /* Ajout d'une transition pour un effet de survol plus fluide */
+}
+
+nav ul li a::before,
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-color-hover));
+    transition: width 0.3s ease;
+}
+
+nav ul li a::before {
+    left: 50%;
+}
+
+nav ul li a::after {
+    right: 50%;
+}
+
+nav ul li a:hover::before,
+nav ul li a:hover::after {
+    width: 50%;
 }
 
 nav ul li a:hover {
-    text-decoration: underline;
+    color: var(--primary-color-hover); /* Utilisation de la variable pour la couleur de survol */
 }
 
 .logo {
