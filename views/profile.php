@@ -3,47 +3,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start(); // Démarre la session si elle n'est pas déjà démarrée
 }
 require_once __DIR__ . '/header.php';
-require_once __DIR__ . '/../models/User.php';
-
-// Vérifie si l'utilisateur est connecté
-if (!isset($_SESSION['user_id'])) {
-    header('Location: /login');
-    exit;
-}
-
-$userModel = new User();
-$user = $userModel->findById($_SESSION['user_id']);
-
-if (!$user) {
-    // Si l'utilisateur n'est pas trouvé, redirige vers la page de connexion
-    header('Location: /login');
-    exit;
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['delete_account'])) {
-        // Suppression du compte
-        $userModel->delete($_SESSION['user_id']);
-        session_destroy();
-        header('Location: /register');
-        exit;
-    } else {
-        // Mise à jour du profil
-        $lastname = $_POST['lastname'];
-        $firstname = $_POST['firstname'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $confirm_password = $_POST['confirm_password'];
-
-        if ($password === $confirm_password) {
-            $userModel->update($_SESSION['user_id'], $lastname, $firstname, $email, $password);
-            header('Location: /profile');
-            exit;
-        } else {
-            $error = 'Les mots de passe ne correspondent pas';
-        }
-    }
-}
 ?>
 
 <!DOCTYPE html>

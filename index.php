@@ -12,6 +12,7 @@ include 'controllers/HomeController.php';
 include 'controllers/LeaderboardController.php';
 include 'controllers/LoginController.php';
 include 'controllers/RegisterController.php';
+include 'controllers/ProfileController.php';
 
 $request = $_SERVER['REQUEST_URI'];
 
@@ -32,7 +33,8 @@ switch ($request) {
         $controller->register();
         break;
     case '/profile':
-        include 'views/profile.php';
+        $controller = new ProfileController();
+        $controller->updateProfile();
         break;
     case '/games':
         include 'views/games.php';
