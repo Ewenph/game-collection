@@ -1,6 +1,6 @@
 /* Global */
 body {
-    font-family: 'Lexend', sans-serif;
+    font-family: var(--font-family);
     background-color: #211f2a;
     color: white;
     margin: 0;
