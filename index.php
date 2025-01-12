@@ -14,7 +14,8 @@ include 'controllers/LoginController.php';
 include 'controllers/RegisterController.php';
 include 'controllers/ProfileController.php';
 
-$request = $_SERVER['REQUEST_URI'];
+$request = strtok($_SERVER['REQUEST_URI'], '?'); // Chemin avant le '?'
+$queryParams = $_GET; // Récupère les paramètres de requête comme `?search=minecraft`
 
 switch ($request) {
     case '/':
