@@ -1,5 +1,8 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/header.php';
+
+use Dotenv\Dotenv;
 
 // Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
@@ -7,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Connexion à la base de données
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
 $dbname = $_ENV["DB_NAME"];
