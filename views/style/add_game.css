@@ -71,6 +71,7 @@ form input[type="checkbox"] {
     margin-right: 8px;
 }
 
+/* Groupement des plateformes */
 .platform-group {
     display: flex;
     flex-wrap: wrap;
