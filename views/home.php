@@ -24,8 +24,14 @@ try {
     exit;
 }
 
-// Récupération des jeux de l'utilisateur
+// Récupération des informations de l'utilisateur connecté
 $user_id = $_SESSION['user_id'];
+$query = "SELECT Pren_uti FROM Utilisateur WHERE Id_uti = :user_id";
+$stmt = $db->prepare($query);
+$stmt->execute(['user_id' => $user_id]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Récupération des jeux de l'utilisateur
 $query = "
     SELECT 
         j.Id_jeu,
@@ -58,7 +64,7 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <main class="home-page">
         <section class="hero">
             <div class="hero-content">
-                <h1>SALUT {PRENOM} !</h1>
+                <h1>SALUT <?= htmlspecialchars($user['Pren_uti']) ?> !</h1>
                 <p>PRÊT À AJOUTER DES JEUX À TA COLLECTION ?</p>
             </div>
         </section>
