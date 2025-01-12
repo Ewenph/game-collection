@@ -3,8 +3,8 @@ body {
     font-family: var(--font-family);
     margin: 0;
     padding: 0;
-    background-color: var(--background-color); /* Fond principal */
-    color: var(--text-color); /* Texte principal */
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 /* Conteneur principal */
@@ -25,13 +25,13 @@ section {
 section h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    color: var(--text-color); /* Texte principal */
+    color: var(--text-color);
 }
 
 section p {
     margin: 5px 0 15px;
     font-size: 1rem;
-    color: var(--description-text-color); /* Texte secondaire */
+    color: var(--description-text-color);
 }
 
 section h2 {
@@ -59,13 +59,13 @@ form input[type="number"] {
     font-size: 1rem;
     border: 1px solid var(--secondary-color);
     border-radius: 5px;
-    background-color: var(--input-background-color); /* Fond des champs */
-    color: var(--text-color); /* Texte principal */
+    background-color: var(--input-background-color);
+    color: var(--text-color);
 }
 
 form button {
     padding: 10px 20px;
-    background-color: var(--primary-color); /* Couleur principale */
+    background-color: var(--primary-color);
     color: var(--text-color);
     border: none;
     border-radius: 5px;
@@ -75,15 +75,15 @@ form button {
 }
 
 form button:hover {
-    background-color: var(--primary-color-hover); /* Hover couleur principale */
+    background-color: var(--primary-color-hover);
 }
 
 form .delete-button {
-    background-color: var(--error-color); /* Rouge */
+    background-color: var(--error-color);
 }
 
 form .delete-button:hover {
-    background-color: var(--error-color-hover); /* Hover rouge */
+    background-color: var(--error-color-hover);
 }
 
 /* Image à droite */

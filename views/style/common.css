@@ -115,7 +115,7 @@ footer {
 }
 
 .error {
-    color: var(--error-color-hover); /* Met le texte en rouge */
-    font-weight: bold; /* Ajoute du gras pour plus de visibilité */
-    margin-top: 10px; /* Ajoute un peu d'espace au-dessus */
+    color: var(--error-color-hover);
+    font-weight: bold;
+    margin-top: 10px;
 }
