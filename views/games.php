@@ -35,6 +35,7 @@ require_once __DIR__ . '/header.php';
 
     <!-- Résultats de la recherche -->
     <?php if (!empty($games)): ?>
+<<<<<<< HEAD
         <section class="games-section">
             <h2>Résultats de la recherche</h2>
             <div class="games-grid">
@@ -57,6 +58,25 @@ require_once __DIR__ . '/header.php';
                                 <?php endif; ?>
                             </form>
                         </div>
+=======
+        <h2>Résultats de la recherche</h2>
+        <div class="games-grid">
+            <?php foreach ($games as $game): ?>
+                <div class="game-card">
+                    <img src="<?= htmlspecialchars($game['Url_jeu']) ?>" alt="<?= htmlspecialchars($game['Nom_jeu']) ?>" class="game-image">
+                    <div class="game-info">
+                        <h3><?= htmlspecialchars($game['Nom_jeu']) ?></h3>
+                        <p><?= htmlspecialchars($game['Plateformes'] ?: 'Aucune plateforme') ?></p>
+                        <p class="description"><?= htmlspecialchars($game['Desc_jeu'] ?: 'Pas de description') ?></p>
+                        <form action="/add_to_library" method="POST">
+                            <input type="hidden" name="game_id" value="<?= $game['Id_jeu'] ?>">
+                            <?php if ($game['Possede']): ?>
+                                <button type="button" class="add-button disabled" disabled>Déjà possédé</button>
+                            <?php else: ?>
+                                <button type="submit" class="add-button">AJOUTER À LA BIBLIOTHÈQUE</button>
+                            <?php endif; ?>
+                        </form>
+>>>>>>> 64eaf6d8883227ae8b425a43f0ee713add42c0dc
                     </div>
                 <?php endforeach; ?>
             </div>

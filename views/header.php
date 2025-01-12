@@ -15,7 +15,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <header class="header">
         <nav>
             <ul class="nav-list">
-                <li><a href="/home"><img src="/assets/logo.png" alt="Logo" class="logo"></a></li>
+                <li><a href="/home" class="logo-link"><img src="/assets/logo.png" alt="Logo" class="logo"></a></li>
                 <li><a href="/home">MA BIBLIOTHÈQUE</a></li>
                 <li><a href="/games">AJOUTER UN JEU</a></li>
                 <li><a href="/leaderboard">CLASSEMENT</a></li>

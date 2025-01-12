@@ -26,6 +26,10 @@ class GameController {
         if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
             $search = htmlspecialchars($_GET['search']);
             $games = $this->gameModel->search($search, $_SESSION['user_id']);
+            if (empty($games)) {
+                header('Location: /add_game');
+                exit;
+            }
         }
 
         require_once __DIR__ . '/../views/games.php';
