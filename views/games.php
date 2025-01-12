@@ -14,8 +14,8 @@ require_once __DIR__ . '/header.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Jeux</title>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/views/style/home.css">
     <link rel="stylesheet" href="/views/style/games.css">
+    <link rel="stylesheet" href="/views/style/home.css">
 </head>
 <body>
 <div class="container">
