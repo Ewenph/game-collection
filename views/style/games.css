@@ -21,6 +21,7 @@ h1, h2 {
     text-align: left;
     margin-bottom: 20px;
     color: var(--text-color);
+    font-family: var(--font-family);
 }
 
 /* Formulaire de recherche */
@@ -28,6 +29,7 @@ h1, h2 {
     display: flex;
     gap: 10px;
     margin-bottom: 30px;
+    font-family: var(--font-family);
 }
 
 .search-form input {
@@ -38,6 +40,12 @@ h1, h2 {
     font-size: 14px;
     background-color: var(--secondary-color);
     color: var(--text-color);
+    font-family: var(--font-family);
+}
+
+.search-form input::placeholder {
+    font-family: var(--font-family);
+    color: var(--secondary-text-color);
 }
 
 .search-form button {
@@ -51,6 +59,7 @@ h1, h2 {
     font-weight: bold;
     text-transform: uppercase;
     transition: background-color 0.3s ease;
+    font-family: var(--font-family);
 }
 
 .search-form button:hover {
@@ -99,19 +108,21 @@ h1, h2 {
 /* Titre et plateforme */
 .game-details h3 {
     font-size: 18px;
-    margin: 5px 0;
+    margin: 10px 0;
     color: var(--text-color);
 }
 
 .game-details p {
     font-size: 14px;
     color: var(--secondary-text-color);
+    margin: 10px 0;
 }
 
 /* Description */
 .game-details .description {
     font-size: 12px;
     color: var(--description-text-color);
+    margin: 10px 0;
 }
 
 /* Bouton */
