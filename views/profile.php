@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="password" id="confirm-password" name="confirm_password" required>
 
             <button type="submit">Modifier</button>
-            <button type="submit" name="delete_account">Supprimer mon compte</button>
+            <button type="submit" name="delete_account" class="delete-button">Supprimer mon compte</button>
             <a href="/login" class="logout-button">Se déconnecter</a>
         </form>
     </main>

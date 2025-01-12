@@ -15,6 +15,7 @@ header {
     top: 0;
     width: 100%;
 }
+
 form {
     background-color: #252836;
     padding: 20px 30px;
@@ -57,6 +58,7 @@ button {
     cursor: pointer;
     width: 100%;
     margin-top: 15px;
+    font-family: 'Lexend', sans-serif; /* Ajout de la police Lexend */
 }
 
 button:hover {
@@ -82,4 +84,14 @@ footer {
     text-align: center;
     font-size: 0.8em;
     color: gray;
+}
+
+/* Style spécifique pour le bouton de suppression de compte */
+.delete-button {
+    background-color: #d9534f; /* Rouge */
+    font-family: 'Lexend', sans-serif; /* Ajout de la police Lexend */
+}
+
+.delete-button:hover {
+    background-color: #c9302c; /* Rouge plus foncé au survol */
 }
