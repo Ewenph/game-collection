@@ -21,7 +21,7 @@ require_once __DIR__ . '/header.php';
             <?php if (!empty($errors)): ?>
                 <div>
                     <?php foreach ($errors as $error): ?>
-                        <p class="error"><?= $error ?></p>  <!-- Affiche l'erreur sans htmlspecialchars -->
+                        <p class="error"><?= $error ?></p>
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>

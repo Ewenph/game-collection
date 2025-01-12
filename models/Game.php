@@ -68,7 +68,7 @@ class Game {
             VALUES (:nom, :editeur, :sortie, :description, :id_multiplateforme, :url_jeu, :url_site)
         ");
         $stmt->execute($data);
-        return $this->db->lastInsertId(); // Correction ici
+        return $this->db->lastInsertId();
     }
 
     // Mettre à jour un jeu existant
@@ -136,7 +136,7 @@ class Game {
             'user_id' => $user_id
         ]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result ? (int)$result['Temps_jeu'] : 0; // Retourne 0 si pas trouvé
+        return $result ? (int)$result['Temps_jeu'] : 0;
     }
 
     // Mettre à jour le temps de jeu pour un utilisateur et un jeu
