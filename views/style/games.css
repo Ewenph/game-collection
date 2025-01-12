@@ -88,7 +88,7 @@ h1, h2 {
 }
 
 /* Contenu des cartes */
-.game-info {
+.game-details {
     flex: 1;
     padding: 15px;
     display: flex;
@@ -97,36 +97,21 @@ h1, h2 {
 }
 
 /* Titre et plateforme */
-.game-info h3 {
+.game-details h3 {
     font-size: 18px;
-    margin: 10px 0 5px;
+    margin: 5px 0;
     color: var(--text-color);
 }
 
-.game-info p {
+.game-details p {
     font-size: 14px;
     color: var(--secondary-text-color);
-    margin: 5px 0;
 }
 
 /* Description */
-.game-info .description {
+.game-details .description {
     font-size: 12px;
     color: var(--description-text-color);
-    margin: 10px 0;
-}
-
-/* Ajout de marges pour espacer les éléments */
-.game-info h3 {
-    margin-bottom: 10px;
-}
-
-.game-info p {
-    margin-bottom: 10px;
-}
-
-.game-info .description {
-    margin-bottom: 10px;
 }
 
 /* Bouton */
