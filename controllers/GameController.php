@@ -125,7 +125,7 @@ class GameController {
 
         $this->gameModel->setPlayTime($id_jeu, $user_id, $time);
 
-        header("Location: /modify_game?id=$id_jeu&success=1");
+        header("Location: /home?success=1"); // Redirige vers la page d'accueil après la mise à jour
         exit;
     }
 
