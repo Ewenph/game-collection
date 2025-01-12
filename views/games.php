@@ -30,7 +30,7 @@ require_once __DIR__ . '/header.php';
 
     <!-- Texte et bouton pour créer un nouveau jeu -->
     <div class="create-game-section">
-        <p class="create-game-text">Le jeu n'existe pas ?</p>
+        <p class="create-game-text">Jeu introuvable ?</p>
         <a href="/add_game" class="create-button">Créer le jeu</a>
     </div>
 
