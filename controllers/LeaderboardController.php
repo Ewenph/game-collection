@@ -5,9 +5,22 @@ class LeaderboardController {
     private $username = 'td21-1';
     private $password = 'BJCkZcFAIUeJqL4E';
 
+    public function __construct() {
+        $this->connect_to_database();
+    }
+
+    private function connect_to_database() {
+        try {
+            $this->db = new PDO("mysql:host=localhost;dbname={$this->dbname};charset=utf8", $this->username, $this->password);
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+            exit;
+        }
+    }
+
     public function index() {
-        $userModel = new User();
-        $users = $userModel->selecInfo();
+        $users = $this->selecInfo();
 
         // Debug temporaire pour vérifier le contenu de $users
         if (empty($users)) {
@@ -23,12 +36,8 @@ class LeaderboardController {
 
     public function selecInfo() {
         try {
-            // Connexion à la base de données
-            $db = new PDO("mysql:host=localhost;dbname={$this->dbname};charset=utf8", $this->username, $this->password);
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             // Requête SQL pour récupérer les informations des joueurs
-            $stmt = $db->prepare("
+            $stmt = $this->db->prepare("
                 SELECT 
                     u.Pren_uti AS Prenom,
                     u.Nom_uti AS Nom,
