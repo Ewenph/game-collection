@@ -117,7 +117,7 @@ class Game {
     // Récupérer le nombre d'heures jouées pour un utilisateur et un jeu
     public function getPlayTime($id_jeu, $user_id) {
         $stmt = $this->db->prepare("
-            SELECT Temps_joue 
+            SELECT Temps_jeu 
             FROM Bibliothèque 
             WHERE Id_jeu = :id_jeu AND Id_uti = :user_id
         ");
@@ -126,7 +126,7 @@ class Game {
             'user_id' => $user_id
         ]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result ? (int)$result['Temps_joue'] : 0; // Retourne 0 si pas trouvé
+        return $result ? (int)$result['Temps_jeu'] : 0; // Retourne 0 si pas trouvé
     }
 
     // Ajouter du temps de jeu pour un utilisateur et un jeu
@@ -137,7 +137,7 @@ class Game {
             // Mettre à jour le temps si déjà enregistré
             $stmt = $this->db->prepare("
                 UPDATE Bibliothèque 
-                SET Temps_joue = :new_time 
+                SET Temps_jeu = :new_time 
                 WHERE Id_jeu = :id_jeu AND Id_uti = :user_id
             ");
             $stmt->execute([
@@ -148,7 +148,7 @@ class Game {
         } else {
             // Insérer un nouveau temps si inexistant
             $stmt = $this->db->prepare("
-                INSERT INTO Bibliothèque (Id_jeu, Id_uti, Temps_joue) 
+                INSERT INTO Bibliothèque (Id_jeu, Id_uti, Temps_jeu) 
                 VALUES (:id_jeu, :user_id, :hours)
             ");
             $stmt->execute([
@@ -170,6 +170,4 @@ class Game {
             'user_id' => $user_id
         ]);
     }
-
-
 }
