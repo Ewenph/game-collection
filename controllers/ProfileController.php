@@ -57,13 +57,13 @@ class ProfileController {
     
                 // Vérification des longueurs
                 $errors = [];
-                if (strlen($lastname) > 100) {
+                if (strlen($lastname) > 32) {
                     $errors[] = 'Le nom ne peut pas dépasser 100 caractères.';
                 }
-                if (strlen($firstname) > 100) {
+                if (strlen($firstname) > 32) {
                     $errors[] = 'Le prénom ne peut pas dépasser 100 caractères.';
                 }
-                if (strlen($email) > 100) {
+                if (strlen($email) > 32) {
                     $errors[] = 'L\'adresse email ne peut pas dépasser 100 caractères.';
                 }
     
