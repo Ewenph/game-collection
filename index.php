@@ -43,7 +43,8 @@ switch ($request) {
         include 'views/add_game.php';
         break;
     case '/leaderboard':
-        include 'views/leaderboard.php';
+        $controller = new LeaderboardController();
+        $controller->index();
         break;
     case '/modify_game':
         include 'views/modify_game.php';

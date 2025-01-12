@@ -1,17 +1,21 @@
 <?php
+
 class LeaderboardController {
     private $db;
-    private $dbname = 'td21-1';
-    private $username = 'td21-1';
-    private $password = 'BJCkZcFAIUeJqL4E';
 
     public function __construct() {
         $this->connect_to_database();
     }
 
     private function connect_to_database() {
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+        $dotenv->load();
+
+        $dbname = $_ENV["DB_NAME"];
+        $username = $_ENV["DB_USER"];
+        $password = $_ENV["DB_PASSWORD"];
         try {
-            $this->db = new PDO("mysql:host=localhost;dbname={$this->dbname};charset=utf8", $this->username, $this->password);
+            $this->db = new PDO("mysql:host=localhost;dbname={$dbname};charset=utf8", $username, $password);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
@@ -21,22 +25,11 @@ class LeaderboardController {
 
     public function index() {
         $users = $this->selecInfo();
-
-        // Debug temporaire pour vérifier le contenu de $users
-        if (empty($users)) {
-            echo "Aucune donnée n'a été récupérée depuis la base.";
-            var_dump($users);
-        } else {
-            echo "Données récupérées avec succès :";
-            var_dump($users);
-        }
-
         require_once __DIR__ . '/../views/leaderboard.php';
     }
 
     public function selecInfo() {
         try {
-            // Requête SQL pour récupérer les informations des joueurs
             $stmt = $this->db->prepare("
                 SELECT 
                     u.Pren_uti AS Prenom,
@@ -63,13 +56,9 @@ class LeaderboardController {
             ");
 
             $stmt->execute();
-
-            // Retourner les données sous forme de tableau associatif
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
         } catch (Exception $e) {
             throw new Exception("Erreur lors de la récupération des données : " . $e->getMessage());
         }
     }
 }
-?>
