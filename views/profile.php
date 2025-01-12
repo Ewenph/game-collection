@@ -18,12 +18,12 @@ require_once __DIR__ . '/header.php';
         <form action="/profile" method="POST">
             <h1>Mon profil</h1>
             <?php if (!empty($errors)): ?>
-                <div>
-                    <?php foreach ($errors as $error): ?>
-                        <p class="error"><?= htmlspecialchars($error) ?></p>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
+    <div>
+        <?php foreach ($errors as $error): ?>
+            <p class="error"><?= $error ?></p>  <!-- Affiche l'erreur sans htmlspecialchars -->
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
 
 
             <label for="lastname">Nom :</label>
