@@ -64,6 +64,12 @@ nav ul li a:hover {
     color: var(--primary-color-hover);
 }
 
+/* Désactiver l'effet de soulignement pour le logo */
+nav ul li a.logo-link::before,
+nav ul li a.logo-link::after {
+    content: none;
+}
+
 /* Style pour le logo */
 .logo {
     height: 40px;
