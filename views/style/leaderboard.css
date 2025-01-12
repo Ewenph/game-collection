@@ -1,8 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lexend', sans-serif;
+    background-color: #121212; /* Couleur de fond de la page */
+    color: #ffffff; /* Couleur du texte */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrer horizontalement */
+    margin-top: 20px;
+}
+
+h1 {
+    margin: 0;
+    text-align: left;
+    align-self: flex-start; /* Aligne le texte à gauche */
+    padding-left: 10%; /* Décale un peu depuis la gauche */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
 table {
-    width: 100%;
+    width: 80%; /* Largeur du tableau pour qu'il soit centré */
     border-collapse: collapse;
     margin: 20px 0;
-    text-align: left; /* Aligner le contenu à gauche */
+    background-color: #1e1e2e; /* Fond du tableau */
+    color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Ombre autour du tableau */
+    border-radius: 8px; /* Coins arrondis */
+    overflow: hidden;
 }
 
 thead {
@@ -11,26 +40,35 @@ thead {
 }
 
 thead th {
-    padding: 10px;
+    padding: 15px;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    text-align: left; /* Alignement gauche */
 }
 
 tbody tr {
-    background-color: #1e1e2e; /* Fond du tableau */
-    color: #aaaaaa;
+    background-color: #1e1e2e; /* Fond des lignes du tableau */
+    color: #ffffff;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #252534; /* Alterner légèrement la couleur des lignes */
+    background-color: #252534; /* Fond alterné */
 }
 
 tbody td {
-    padding: 10px;
-    border: 1px solid #2c2c3e; /* Ajout de bordures discrètes */
+    padding: 15px;
+    border: 1px solid #2c2c3e; /* Bordures des cellules */
+    font-size: 0.9rem;
 }
 
 tbody tr:hover {
     background-color: unset; /* Désactive l'effet de survol */
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #777777;
+    font-size: 0.9rem;
 }
