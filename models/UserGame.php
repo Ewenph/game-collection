@@ -43,10 +43,13 @@ class UserGame {
 
     public function getUserGames($userId) {
         $stmt = $this->db->prepare("
-            SELECT j.*, b.Temps_jeu 
+            SELECT j.*, b.Temps_jeu, GROUP_CONCAT(p.Nom_plateforme SEPARATOR ', ') AS Plateformes
             FROM Jeu j
             JOIN Bibliothèque b ON j.Id_jeu = b.Id_jeu
+            LEFT JOIN Jeu_Plateforme jp ON j.Id_jeu = jp.Id_jeu
+            LEFT JOIN Plateforme p ON jp.Id_plateforme = p.Id_plateforme
             WHERE b.Id_uti = :userId
+            GROUP BY j.Id_jeu
         ");
         $stmt->execute(['userId' => $userId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
