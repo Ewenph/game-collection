@@ -1,17 +1,20 @@
 /* Import des variables CSS globales */
 @import url('variables.css');
 
+/* Style global pour le body */
 body {
     margin: 0;
     padding: 0;
     font-family: var(--font-family);
 }
 
+/* Style pour le header */
 header {
     background-color: var(--background-color);
     padding: 10px 0;
 }
 
+/* Style pour la navigation */
 nav ul {
     list-style: none;
     padding: 0;
@@ -24,6 +27,7 @@ nav ul li {
     margin: 0 15px;
 }
 
+/* Style pour les liens de navigation */
 nav ul li a {
     color: var(--text-color);
     text-decoration: none; /* Supprime le soulignement de base */
@@ -60,6 +64,7 @@ nav ul li a:hover {
     color: var(--primary-color-hover); /* Utilisation de la variable pour la couleur de survol */
 }
 
+/* Style pour le logo */
 .logo {
     height: 40px; /* Ajustez la hauteur du logo selon vos besoins */
     margin-right: 15px; /* Espace entre le logo et les autres éléments */
