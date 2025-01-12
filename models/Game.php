@@ -106,4 +106,70 @@ class Game {
         $stmt = $this->db->prepare("DELETE FROM Jeu_Plateforme WHERE Id_jeu = :id_jeu");
         $stmt->execute(['id_jeu' => $id_jeu]);
     }
+
+    public function getGameName($id_jeu) {
+        $stmt = $this->db->prepare("SELECT Nom_jeu FROM Jeu WHERE Id_jeu = :id_jeu");
+        $stmt->execute(['id_jeu' => $id_jeu]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result['Nom_jeu'] : null;
+    }
+
+    // Récupérer le nombre d'heures jouées pour un utilisateur et un jeu
+    public function getPlayTime($id_jeu, $user_id) {
+        $stmt = $this->db->prepare("
+            SELECT Temps_joue 
+            FROM Bibliothèque 
+            WHERE Id_jeu = :id_jeu AND Id_uti = :user_id
+        ");
+        $stmt->execute([
+            'id_jeu' => $id_jeu,
+            'user_id' => $user_id
+        ]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? (int)$result['Temps_joue'] : 0; // Retourne 0 si pas trouvé
+    }
+
+    // Ajouter du temps de jeu pour un utilisateur et un jeu
+    public function addPlayTime($id_jeu, $user_id, $hours) {
+        $currentTime = $this->getPlayTime($id_jeu, $user_id);
+
+        if ($currentTime !== null) {
+            // Mettre à jour le temps si déjà enregistré
+            $stmt = $this->db->prepare("
+                UPDATE Bibliothèque 
+                SET Temps_joue = :new_time 
+                WHERE Id_jeu = :id_jeu AND Id_uti = :user_id
+            ");
+            $stmt->execute([
+                'new_time' => $currentTime + $hours,
+                'id_jeu' => $id_jeu,
+                'user_id' => $user_id
+            ]);
+        } else {
+            // Insérer un nouveau temps si inexistant
+            $stmt = $this->db->prepare("
+                INSERT INTO Bibliothèque (Id_jeu, Id_uti, Temps_joue) 
+                VALUES (:id_jeu, :user_id, :hours)
+            ");
+            $stmt->execute([
+                'id_jeu' => $id_jeu,
+                'user_id' => $user_id,
+                'hours' => $hours
+            ]);
+        }
+    }
+
+    // Supprimer un jeu de la bibliothèque d'un utilisateur
+    public function removeGameFromLibrary($id_jeu, $user_id) {
+        $stmt = $this->db->prepare("
+            DELETE FROM Bibliothèque 
+            WHERE Id_jeu = :id_jeu AND Id_uti = :user_id
+        ");
+        $stmt->execute([
+            'id_jeu' => $id_jeu,
+            'user_id' => $user_id
+        ]);
+    }
+
+
 }
