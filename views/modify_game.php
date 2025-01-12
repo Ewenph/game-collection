@@ -19,53 +19,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="views/style/add_game.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Ajouter un jeu à sa bibliothèque</h1>
-        <p>Le jeu que vous souhaitez ajouter n'existe pas ! Vous pouvez le créer, celui-ci sera automatiquement ajouté à votre bibliothèque !</p>
-        
-        <form action="add_game" method="POST">
-            <label for="nom">Nom du jeu</label>
-            <input type="text" id="nom" name="nom" placeholder="Nom du jeu" required>
+<main>
+    <h1><?= htmlspecialchars($game['Nom_jeu']) ?></h1>
+    <p><?= htmlspecialchars($game['Description'] ?? 'Pas de description disponible') ?></p>
+    <p>Temps passé : <?= htmlspecialchars($game['Temps_jeu']) ?> h</p>
 
-            <label for="editeur">Éditeur du jeu</label>
-            <input type="text" id="editeur" name="editeur" placeholder="Éditeur du jeu">
-
-            <label for="sortie">Sortie du jeu</label>
-            <input type="date" id="sortie" name="sortie">
-
-            <!-- Groupement des plateformes -->
-            <label>Plateformes</label>
-            <div class="platform-group">
-                <div>
-                    <input type="checkbox" id="playstation" name="platforms[]" value="Playstation">
-                    <label for="playstation">Playstation</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="xbox" name="platforms[]" value="Xbox">
-                    <label for="xbox">Xbox</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="nintendo" name="platforms[]" value="Nintendo">
-                    <label for="nintendo">Nintendo</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="pc" name="platforms[]" value="PC">
-                    <label for="pc">PC</label>
-                </div>
-            </div>
-
-            <label for="description">Description du jeu</label>
-            <textarea id="description" name="description" placeholder="Description du jeu"></textarea>
-
-            <label for="cover">URL de la cover</label>
-            <input type="url" id="cover" name="cover" placeholder="URL de la cover">
-
-            <label for="site">URL du site</label>
-            <input type="url" id="site" name="site" placeholder="URL du site">
-
-            <button type="submit">Ajouter le jeu</button>
+    <section>
+        <h2>Ajouter du temps passé sur le jeu</h2>
+        <form action="/update-time" method="POST">
+            <label for="temps">Temps passé sur le jeu</label>
+            <input type="number" id="temps" name="temps" value="<?= htmlspecialchars($game['Temps_jeu']) ?>" min="1" required>
+            <input type="hidden" name="id_jeu" value="<?= htmlspecialchars($game['Id_jeu']) ?>">
+            <button type="submit">Ajouter</button>
         </form>
-    </div>
+    </section>
+
+    <form action="/delete-game" method="POST">
+        <input type="hidden" name="id_jeu" value="<?= htmlspecialchars($game['Id_jeu']) ?>">
+        <button type="submit" class="delete-button">Supprimer le jeu de ma bibliothèque</button>
+    </form>
+</main>
+</body>
 
     <footer>
         Game Collection - 2023 - Tous droits réservés
