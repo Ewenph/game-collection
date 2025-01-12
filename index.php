@@ -26,7 +26,8 @@ switch ($request) {
         $controller->login();
         break;
     case '/home':
-        include 'views/home.php';
+        $controller = new HomeController();
+        $controller->index();
         break;
     case '/register':
         $controller = new RegisterController();

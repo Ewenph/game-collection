@@ -1,54 +1,10 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../controllers/HomeController.php';
+
+$controller = new HomeController();
+$controller->index();
+
 require_once __DIR__ . '/header.php';
-
-use Dotenv\Dotenv;
-
-// Vérifie si l'utilisateur est connecté
-if (!isset($_SESSION['user_id'])) {
-    die('Vous devez être connecté pour voir vos jeux.');
-}
-
-// Connexion à la base de données
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
-
-$dbname = $_ENV["DB_NAME"];
-$username = $_ENV["DB_USER"];
-$password = $_ENV["DB_PASSWORD"];
-try {
-    $db = new PDO("mysql:host=localhost;dbname={$dbname};charset=utf8", $username, $password);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-    exit;
-}
-
-// Récupération des informations de l'utilisateur connecté
-$user_id = $_SESSION['user_id'];
-$query = "SELECT Pren_uti FROM Utilisateur WHERE Id_uti = :user_id";
-$stmt = $db->prepare($query);
-$stmt->execute(['user_id' => $user_id]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-// Récupération des jeux de l'utilisateur
-$query = "
-    SELECT 
-        j.Id_jeu,
-        j.Nom_jeu, 
-        j.Url_jeu, 
-        GROUP_CONCAT(p.Nom_plateforme SEPARATOR ', ') AS Plateformes, 
-        b.Temps_jeu 
-    FROM Bibliothèque b
-    JOIN Jeu j ON b.Id_jeu = j.Id_jeu
-    LEFT JOIN Jeu_Plateforme jp ON j.Id_jeu = jp.Id_jeu
-    LEFT JOIN Plateforme p ON jp.Id_plateforme = p.Id_plateforme
-    WHERE b.Id_uti = :user_id
-    GROUP BY j.Id_jeu
-";
-$stmt = $db->prepare($query);
-$stmt->execute(['user_id' => $user_id]);
-$games = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
