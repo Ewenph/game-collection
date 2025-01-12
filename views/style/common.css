@@ -113,3 +113,17 @@ footer {
 .logout-spacing {
     margin-top: 20px;
 }
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.error::before {
+    content: "•";
+    font-size: 1.2em;
+    color: red;
+}

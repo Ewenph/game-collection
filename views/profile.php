@@ -18,12 +18,13 @@ require_once __DIR__ . '/header.php';
         <form action="/profile" method="POST">
             <h1>Mon profil</h1>
             <?php if (!empty($errors)): ?>
-                <div style="color: red;">
+                <div>
                     <?php foreach ($errors as $error): ?>
-                        <p><?= htmlspecialchars($error) ?></p>
+                        <p class="error"><?= htmlspecialchars($error) ?></p>
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>
+
 
             <label for="lastname">Nom :</label>
             <input type="text" id="lastname" name="lastname" value="<?= htmlspecialchars($user['Nom_uti']) ?>" required>
