@@ -69,10 +69,9 @@ button:hover {
 }
 
 a {
-    color: #6c4dfc;
+    color: var(--primary-color);
     text-decoration: none;
     display: block;
-    margin-top: 10px;
     font-size: 0.9em;
 }
 
@@ -97,4 +96,9 @@ footer {
 
 .delete-button:hover {
     background-color: var(--error-color-hover);
+}
+
+/* Espacement spécifique pour le bouton de déconnexion */
+.logout-spacing {
+    margin-top: 20px; /* Ajustez cette valeur selon vos besoins */
 }

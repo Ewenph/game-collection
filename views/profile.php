@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <button type="submit">Modifier</button>
             <button type="submit" name="delete_account" class="delete-button">Supprimer mon compte</button>
-            <a href="/login" class="logout-button">Se déconnecter</a>
+            <a href="/login" class="logout-button logout-spacing">Se déconnecter</a>
         </form>
     </main>
     <footer>
