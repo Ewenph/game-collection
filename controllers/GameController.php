@@ -22,6 +22,7 @@ class GameController {
 
         $search = '';
         $games = [];
+        $suggestedGames = [];
 
         if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
             $search = htmlspecialchars($_GET['search']);
@@ -30,6 +31,8 @@ class GameController {
                 header('Location: /add_game');
                 exit;
             }
+        } else {
+            $suggestedGames = $this->gameModel->getSuggestedGames(9);
         }
 
         require_once __DIR__ . '/../views/games.php';

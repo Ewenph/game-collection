@@ -26,6 +26,32 @@ require_once __DIR__ . '/header.php';
         <button type="submit">RECHERCHER</button>
     </form>
 
+    <!-- Suggestions de jeux -->
+    <?php if (!empty($suggestedGames)): ?>
+        <section class="suggested-games">
+            <h2>Suggestions de jeux</h2>
+            <div class="games-grid">
+                <?php foreach ($suggestedGames as $suggestedGame): ?>
+                    <div class="game-card">
+                        <div class="game-image-container">
+                            <img src="<?= htmlspecialchars($suggestedGame['Url_jeu']) ?>" alt="<?= htmlspecialchars($suggestedGame['Nom_jeu']) ?>" class="game-image">
+                        </div>
+                        <div class="game-details">
+                            <h3><?= htmlspecialchars($suggestedGame['Nom_jeu']) ?></h3>
+                            <p><?= htmlspecialchars($suggestedGame['Plateformes'] ?: 'Aucune plateforme') ?></p>
+                            <p class="description"><?= htmlspecialchars($suggestedGame['Desc_jeu'] ?: 'Pas de description') ?></p>
+                            <!-- Formulaire d'ajout à la bibliothèque -->
+                            <form action="/add_to_library" method="POST">
+                                <input type="hidden" name="game_id" value="<?= $suggestedGame['Id_jeu'] ?>">
+                                <button type="submit" class="add-button">AJOUTER À LA BIBLIOTHÈQUE</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    <?php endif; ?>
+
     <!-- Messages de retour -->
     <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
         <div class="message success">Le jeu a été ajouté à votre bibliothèque avec succès !</div>
@@ -61,7 +87,6 @@ require_once __DIR__ . '/header.php';
                 <?php endforeach; ?>
             </div>
         </section>
-    <?php else: ?>
     <?php endif; ?>
 </div>
 <footer>

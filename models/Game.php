@@ -154,4 +154,20 @@ class Game {
             'user_id' => $user_id
         ]);
     }
+
+    // Récupérer 9 jeux aléatoires
+    public function getSuggestedGames($limit = 9) {
+        $stmt = $this->db->prepare("
+            SELECT j.Id_jeu, j.Nom_jeu, j.Desc_jeu, j.Url_jeu, GROUP_CONCAT(p.Nom_plateforme SEPARATOR ', ') AS Plateformes
+            FROM Jeu j
+            LEFT JOIN Jeu_Plateforme jp ON j.Id_jeu = jp.Id_jeu
+            LEFT JOIN Plateforme p ON jp.Id_plateforme = p.Id_plateforme
+            GROUP BY j.Id_jeu
+            ORDER BY RAND()
+            LIMIT :limit
+        ");
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
