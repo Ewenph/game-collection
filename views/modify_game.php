@@ -1,13 +1,8 @@
-<?php 
-require_once __DIR__ . '/header.php';
+<?php
 require_once __DIR__ . '/../controllers/GameController.php';
 
 $controller = new GameController();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $controller->addGame();
-    exit;
-}
+$controller->modifyGame();
 ?>
 
 <!DOCTYPE html>
@@ -15,13 +10,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un jeu</title>
-    <link rel="stylesheet" href="views/style/add_game.css">
+    <title>Modifier un jeu</title>
+    <link rel="stylesheet" href="/views/style/add_game.css">
 </head>
 <body>
 <main>
     <h1><?= htmlspecialchars($game['Nom_jeu']) ?></h1>
-    <p><?= htmlspecialchars($game['Description'] ?? 'Pas de description disponible') ?></p>
+    <p><?= htmlspecialchars($game['Desc_jeu'] ?? 'Pas de description disponible') ?></p>
     <p>Temps passé : <?= htmlspecialchars($game['Temps_jeu']) ?> h</p>
 
     <section>

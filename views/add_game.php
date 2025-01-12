@@ -1,13 +1,8 @@
-<?php 
-require_once __DIR__ . '/header.php';
+<?php
 require_once __DIR__ . '/../controllers/GameController.php';
 
 $controller = new GameController();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $controller->addGame();
-    exit;
-}
+$controller->addGame();
 ?>
 
 <!DOCTYPE html>
@@ -16,14 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un jeu</title>
-    <link rel="stylesheet" href="views/style/add_game.css">
+    <link rel="stylesheet" href="/views/style/add_game.css">
 </head>
 <body>
     <div class="container">
         <h1>Ajouter un jeu à sa bibliothèque</h1>
         <p>Le jeu que vous souhaitez ajouter n'existe pas ! Vous pouvez le créer, celui-ci sera automatiquement ajouté à votre bibliothèque !</p>
         
-        <form action="add_game.php" method="POST">
+        <form action="/add_game" method="POST">
             <label for="nom">Nom du jeu</label>
             <input type="text" id="nom" name="nom" placeholder="Nom du jeu" required>
 

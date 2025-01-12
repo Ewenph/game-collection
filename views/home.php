@@ -29,7 +29,7 @@ require_once __DIR__ . '/header.php';
             <div class="games-grid">
                 <?php if (count($games) > 0): ?>
                     <?php foreach ($games as $game): ?>
-                        <a href="/views/modify_game.php?id_jeu=<?= htmlspecialchars($game['Id_jeu']) ?>" class="game-link">
+                        <a href="/modify_game?id_jeu=<?= htmlspecialchars($game['Id_jeu']) ?>" class="game-link">
                             <div class="game-card">
                                 <div class="game-image-container">
                                     <img src="<?= htmlspecialchars($game['Url_jeu']) ?>" alt="<?= htmlspecialchars($game['Nom_jeu']) ?>" class="game-image">

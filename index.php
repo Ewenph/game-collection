@@ -38,17 +38,20 @@ switch ($request) {
         $controller->updateProfile();
         break;
     case '/games':
-        include 'views/games.php';
+        $controller = new GameController();
+        $controller->index();
         break;
     case '/add_game':
-        include 'views/add_game.php';
+        $controller = new GameController();
+        $controller->addGame();
         break;
     case '/leaderboard':
         $controller = new LeaderboardController();
         $controller->index();
         break;
     case '/modify_game':
-        include 'views/modify_game.php';
+        $controller = new GameController();
+        $controller->modifyGame();
         break;
     default:
         http_response_code(404);
