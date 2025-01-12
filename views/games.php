@@ -1,3 +1,21 @@
+<?php
+require_once __DIR__ . '/../controllers/GameController.php';
+
+$controller = new GameController();
+$controller->index();
+
+require_once __DIR__ . '/header.php';
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Jeux</title>
+    <link rel="stylesheet" href="/views/style/games.css">
+</head>
+<body>
 <div class="container">
     <h1>Ajouter un jeu à sa bibliothèque</h1>
     <!-- Formulaire de recherche -->
@@ -34,3 +52,8 @@
         </div>
     <?php endif; ?>
 </div>
+    <footer>
+        Game Collection - 2025 - Tous droits réservés
+    </footer>
+</body>
+</html>
