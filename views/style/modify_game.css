@@ -1,9 +1,12 @@
+/* Import des variables CSS globales */
+@import url('variables.css');
+
 /* Général */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #1b1428; /* Fond violet */
+    background-color: var(--primary-color); 
     color: #fff; /* Texte blanc */
 }
 
