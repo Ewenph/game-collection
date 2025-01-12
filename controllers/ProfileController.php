@@ -39,6 +39,8 @@ class ProfileController {
             header('Location: /login');
             exit;
         }
+
+        $errors = [];
     
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['delete_account'])) {
