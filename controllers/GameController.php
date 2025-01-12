@@ -106,7 +106,7 @@ class GameController {
         }
     
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $gameId = (int)$_POST['game_id'];
+            $gameId = (int)$_POST['Id_jeu'];
             $userId = $_SESSION['user_id'];
     
             $userGame = new UserGame();
