@@ -23,7 +23,9 @@ class GameController {
     }
 
     public function index() {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if (!isset($_SESSION['user_id'])) {
             header('Location: /login');
             exit;
@@ -41,7 +43,9 @@ class GameController {
     }
 
     public function addGame() {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if (!isset($_SESSION['user_id'])) {
             header('Location: /login');
             exit;
@@ -101,7 +105,9 @@ class GameController {
     }
 
     public function modifyGame() {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if (!isset($_SESSION['user_id'])) {
             header('Location: /login');
             exit;

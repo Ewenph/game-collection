@@ -19,7 +19,9 @@ class LoginController {
             $user = $this->userModel->findByEmail($email);
 
             if ($user && password_verify($password, $user['Mdp_uti'])) {
-                session_start();
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
                 $_SESSION['user_id'] = $user['Id_uti'];
                 header('Location: /home');
                 exit;
@@ -33,7 +35,9 @@ class LoginController {
     }
 
     public function logout() {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         session_destroy();
         header('Location: /login');
     }
