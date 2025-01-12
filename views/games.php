@@ -13,6 +13,8 @@ require_once __DIR__ . '/header.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Jeux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/views/style/home.css">
     <link rel="stylesheet" href="/views/style/games.css">
 </head>
 <body>
@@ -24,39 +26,47 @@ require_once __DIR__ . '/header.php';
         <button type="submit">RECHERCHER</button>
     </form>
 
+    <!-- Messages de retour -->
     <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
-    <div class="message success">Le jeu a été ajouté à votre bibliothèque avec succès !</div>
+        <div class="message success">Le jeu a été ajouté à votre bibliothèque avec succès !</div>
     <?php elseif (isset($_GET['error']) && $_GET['error'] == 'already_owned'): ?>
         <div class="message error">Ce jeu est déjà dans votre bibliothèque.</div>
     <?php endif; ?>
 
+    <!-- Résultats de la recherche -->
     <?php if (!empty($games)): ?>
-        <h2>Résultats de la recherche</h2>
-        <div class="games-grid">
-            <?php foreach ($games as $game): ?>
-                <div class="game-card">
-                    <img src="<?= htmlspecialchars($game['Url_jeu']) ?>" alt="<?= htmlspecialchars($game['Nom_jeu']) ?>" class="game-image">
-                    <div class="game-info">
-                        <h3><?= htmlspecialchars($game['Nom_jeu']) ?></h3>
-                        <p><?= htmlspecialchars($game['Plateformes'] ?: 'Aucune plateforme') ?></p>
-                        <p class="description"><?= htmlspecialchars($game['Desc_jeu'] ?: 'Pas de description') ?></p>
-                               <form action="/add_to_library" method="POST">
-                                    <input type="hidden" name="game_id" value="<?= $game['Id_jeu'] ?>">
-                                    <?php if ($game['Possede']): ?>
-                                        <button type="button" class="add-button disabled" disabled>Déjà possédé</button>
-                                    <?php else: ?>
-                                        <button type="submit" class="add-button">AJOUTER À LA BIBLIOTHÈQUE</button>
-                                    <?php endif; ?>
-                                </form>
-                        </form>
+        <section class="games-section">
+            <h2>Résultats de la recherche</h2>
+            <div class="games-grid">
+                <?php foreach ($games as $game): ?>
+                    <div class="game-card">
+                        <div class="game-image-container">
+                            <img src="<?= htmlspecialchars($game['Url_jeu']) ?>" alt="<?= htmlspecialchars($game['Nom_jeu']) ?>" class="game-image">
+                        </div>
+                        <div class="game-details">
+                            <h3><?= htmlspecialchars($game['Nom_jeu']) ?></h3>
+                            <p><?= htmlspecialchars($game['Plateformes'] ?: 'Aucune plateforme') ?></p>
+                            <p class="description"><?= htmlspecialchars($game['Desc_jeu'] ?: 'Pas de description') ?></p>
+                            <!-- Formulaire d'ajout à la bibliothèque -->
+                            <form action="/add_to_library" method="POST">
+                                <input type="hidden" name="game_id" value="<?= $game['Id_jeu'] ?>">
+                                <?php if ($game['Possede']): ?>
+                                    <button type="button" class="add-button disabled" disabled>Déjà possédé</button>
+                                <?php else: ?>
+                                    <button type="submit" class="add-button">AJOUTER À LA BIBLIOTHÈQUE</button>
+                                <?php endif; ?>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    <?php else: ?>
+        <p>Aucun jeu trouvé pour cette recherche.</p>
     <?php endif; ?>
 </div>
-    <footer>
-        Game Collection - 2025 - Tous droits réservés
-    </footer>
+<footer>
+    Game Collection - 2025 - Tous droits réservés
+</footer>
 </body>
 </html>
