@@ -41,7 +41,7 @@ require_once __DIR__ . '/header.php';
                         <p><?= htmlspecialchars($game['Plateformes'] ?: 'Aucune plateforme') ?></p>
                         <p class="description"><?= htmlspecialchars($game['Desc_jeu'] ?: 'Pas de description') ?></p>
                                <form action="/add_to_library" method="POST">
-                                    <input type="hidden" name="id_jeu" value="<?= $game['Id_jeu'] ?>">
+                                    <input type="hidden" name="game_id" value="<?= $game['Id_jeu'] ?>">
                                     <?php if ($game['Possede']): ?>
                                         <button type="button" class="add-button disabled" disabled>Déjà possédé</button>
                                     <?php else: ?>
