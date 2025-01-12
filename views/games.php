@@ -57,7 +57,7 @@ require_once __DIR__ . '/header.php';
 
     <!-- Messages de retour -->
     <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
-        <div class="message success">Le jeu a été ajouté à votre bibliothèque avec succès !</div>
+        <div class="message success"></div>
     <?php elseif (isset($_GET['error']) && $_GET['error'] == 'already_owned'): ?>
         <div class="message error">Ce jeu est déjà dans votre bibliothèque.</div>
     <?php endif; ?>
