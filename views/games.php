@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../controllers/GameController.php';
 
+// Initialisation du contrôleur et appel de la méthode d'index
 $controller = new GameController();
 $controller->index();
 
@@ -13,6 +14,7 @@ require_once __DIR__ . '/header.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Jeux</title>
+    <!-- Importation des styles -->
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/views/style/games.css">
     <link rel="stylesheet" href="/views/style/home.css">
@@ -37,6 +39,7 @@ require_once __DIR__ . '/header.php';
                             <img src="<?= htmlspecialchars($suggestedGame['Url_jeu']) ?>" alt="<?= htmlspecialchars($suggestedGame['Nom_jeu']) ?>" class="game-image">
                         </div>
                         <div class="game-details">
+                            <!-- Affichage des détails du jeu -->
                             <h3><?= htmlspecialchars($suggestedGame['Nom_jeu']) ?></h3>
                             <p><?= htmlspecialchars($suggestedGame['Plateformes'] ?: 'Aucune plateforme') ?></p>
                             <p class="description"><?= htmlspecialchars($suggestedGame['Desc_jeu'] ?: 'Pas de description') ?></p>
@@ -70,6 +73,7 @@ require_once __DIR__ . '/header.php';
                             <img src="<?= htmlspecialchars($game['Url_jeu']) ?>" alt="<?= htmlspecialchars($game['Nom_jeu']) ?>" class="game-image">
                         </div>
                         <div class="game-details">
+                            <!-- Affichage des détails du jeu -->
                             <h3><?= htmlspecialchars($game['Nom_jeu']) ?></h3>
                             <p><?= htmlspecialchars($game['Plateformes'] ?: 'Aucune plateforme') ?></p>
                             <p class="description"><?= htmlspecialchars($game['Desc_jeu'] ?: 'Pas de description') ?></p>

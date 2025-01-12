@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../controllers/GameController.php';
 
+// Initialisation du contrôleur et appel de la méthode de modification de jeu
 $controller = new GameController();
 $controller->modifyGame();
 
@@ -13,16 +14,19 @@ require_once __DIR__ . '/header.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier un jeu</title>
+    <!-- Importation des styles -->
     <link rel="stylesheet" href="/views/style/modify_game.css">
 </head>
 <body>
     <main>
         <?php if ($game): ?>
             <section>
+                <!-- Affichage des détails du jeu -->
                 <h1><?= htmlspecialchars($game['Nom_jeu']) ?></h1>
                 <p><?= htmlspecialchars($game['Desc_jeu'] ?? 'Pas de description disponible') ?></p>
                 <p>Temps passé : <?= htmlspecialchars($game['Temps_jeu']) ?> h</p>
                 
+                <!-- Formulaire de mise à jour du temps de jeu -->
                 <h2>Mettre à jour le temps passé sur le jeu</h2>
                 <form action="/modify_game" method="POST">
                     <label for="temps">Temps passé sur le jeu</label>
@@ -31,6 +35,7 @@ require_once __DIR__ . '/header.php';
                     <button type="submit" name="update_time">Mettre à jour</button>
                 </form>
 
+                <!-- Formulaire de suppression du jeu de la bibliothèque -->
                 <form action="/modify_game" method="POST">
                     <input type="hidden" name="id_jeu" value="<?= htmlspecialchars($game['Id_jeu']) ?>">
                     <button type="submit" name="delete_game" class="delete-button">Supprimer le jeu de ma bibliothèque</button>

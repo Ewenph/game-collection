@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../controllers/HomeController.php';
 
+// Initialisation du contrôleur et appel de la méthode d'index
 $controller = new HomeController();
 $controller->index();
 
@@ -13,6 +14,7 @@ require_once __DIR__ . '/header.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes jeux</title>
+    <!-- Importation des styles -->
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/views/style/home.css">
 </head>
@@ -20,6 +22,7 @@ require_once __DIR__ . '/header.php';
     <main class="home-page">
         <section class="hero">
             <div class="hero-content">
+                <!-- Message de bienvenue -->
                 <h1>SALUT <?= htmlspecialchars($user['Pren_uti']) ?> !</h1>
                 <p>PRÊT À AJOUTER DES JEUX À TA COLLECTION ?</p>
             </div>
@@ -35,6 +38,7 @@ require_once __DIR__ . '/header.php';
                                     <img src="<?= htmlspecialchars($game['Url_jeu']) ?>" alt="<?= htmlspecialchars($game['Nom_jeu']) ?>" class="game-image">
                                 </div>
                                 <div class="game-details">
+                                    <!-- Affichage des détails du jeu -->
                                     <h3><?= htmlspecialchars($game['Nom_jeu']) ?></h3>
                                     <p><?= isset($game['Plateformes']) ? htmlspecialchars($game['Plateformes']) : 'Plateformes inconnues' ?></p>
                                     <p><?= htmlspecialchars($game['Temps_jeu']) ?> h</p>

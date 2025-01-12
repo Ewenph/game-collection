@@ -17,15 +17,16 @@ require_once __DIR__ . '/header.php';
     <main>
         <form action="/profile" method="POST">
             <h1>Mon profil</h1>
+            <!-- Affichage des erreurs -->
             <?php if (!empty($errors)): ?>
-    <div>
-        <?php foreach ($errors as $error): ?>
-            <p class="error"><?= $error ?></p>  <!-- Affiche l'erreur sans htmlspecialchars -->
-        <?php endforeach; ?>
-    </div>
-<?php endif; ?>
+                <div>
+                    <?php foreach ($errors as $error): ?>
+                        <p class="error"><?= $error ?></p>  <!-- Affiche l'erreur sans htmlspecialchars -->
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
 
-
+            <!-- Formulaire de mise à jour du profil -->
             <label for="lastname">Nom :</label>
             <input type="text" id="lastname" name="lastname" value="<?= htmlspecialchars($user['Nom_uti']) ?>" required>
 
@@ -41,6 +42,7 @@ require_once __DIR__ . '/header.php';
             <label for="confirm-password">Confirmation du mot de passe :</label>
             <input type="password" id="confirm-password" name="confirm_password" required>
 
+            <!-- Boutons de soumission -->
             <button type="submit">Modifier</button>
             <button type="submit" name="delete_account" class="delete-button">Supprimer mon compte</button>
             <a href="/login" class="logout-button logout-spacing">Se déconnecter</a>

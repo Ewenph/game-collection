@@ -17,9 +17,12 @@ $controller->register();
     <main>
         <form action="/register" method="POST">
             <h1>Inscription</h1>
+            <!-- Affichage des erreurs -->
             <?php if (isset($error)): ?>
                 <p style="color: red;"><?= htmlspecialchars($error) ?></p>
             <?php endif; ?>
+
+            <!-- Formulaire d'inscription -->
             <label for="lastname">Nom :</label>
             <input type="text" id="lastname" name="lastname" required>
             
@@ -35,6 +38,7 @@ $controller->register();
             <label for="confirm-password">Confirmation du mot de passe :</label>
             <input type="password" id="confirm-password" name="confirm_password" required>
             
+            <!-- Boutons de soumission -->
             <button type="submit">S'inscrire</button>
             <a href="/login" class="logout-spacing">Se connecter</a>
         </form>

@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../controllers/LeaderboardController.php';
 
+// Initialisation du contrôleur et appel de la méthode d'index
 $controller = new LeaderboardController();
 $controller->index();
 
@@ -12,6 +13,7 @@ require_once __DIR__ . '/header.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classement</title>
+    <!-- Importation des styles -->
     <link rel="stylesheet" href="/views/style/leaderboard.css">
 </head>
 <body>
@@ -28,6 +30,7 @@ require_once __DIR__ . '/header.php';
         <tbody>
             <?php foreach ($users as $user): ?>
                 <tr>
+                    <!-- Affichage des détails du joueur -->
                     <td><?= htmlspecialchars($user['Prenom'] . ' ' . $user['Nom']) ?></td>
                     <td><?= htmlspecialchars($user['Total_Heures']) ?> heures</td>
                     <td><?= htmlspecialchars($user['Jeu_Prefere'] ?? 'Aucun jeu') ?></td>

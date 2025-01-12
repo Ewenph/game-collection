@@ -10,10 +10,12 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
+    <!-- Importation des styles -->
     <link rel="stylesheet" href="/views/style/common.css">
 </head>
 <body>
     <main>
+        <!-- Formulaire de connexion -->
         <form action="/login" method="POST">
             <h1>Se connecter à Game Collection</h1>
             <?php if (isset($error)): ?>

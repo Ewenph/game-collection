@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../controllers/GameController.php';
 
+// Initialisation du contrôleur et appel de la méthode d'ajout de jeu
 $controller = new GameController();
 $controller->addGame();
 
@@ -13,6 +14,7 @@ require_once __DIR__ . '/header.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un jeu</title>
+    <!-- Importation des styles -->
     <link rel="stylesheet" href="/views/style/add_game.css">
 </head>
 <body>
@@ -20,6 +22,7 @@ require_once __DIR__ . '/header.php';
         <h1>Ajouter un jeu à sa bibliothèque</h1>
         <p>Le jeu que vous souhaitez ajouter n'existe pas ! Vous pouvez le créer, celui-ci sera automatiquement ajouté à votre bibliothèque !</p>
         
+        <!-- Formulaire d'ajout de jeu -->
         <form action="/add_game" method="POST">
             <label for="nom">Nom du jeu</label>
             <input type="text" id="nom" name="nom" placeholder="Nom du jeu" required>
