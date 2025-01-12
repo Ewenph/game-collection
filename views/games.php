@@ -24,10 +24,6 @@ require_once __DIR__ . '/header.php';
         <button type="submit">RECHERCHER</button>
     </form>
 
-    <?php if ($message): ?>
-        <div class="message"><?= htmlspecialchars($message) ?></div>
-    <?php endif; ?>
-
     <?php if (!empty($games)): ?>
         <h2>Résultats de la recherche</h2>
         <div class="games-grid">
