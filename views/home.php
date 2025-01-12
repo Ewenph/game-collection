@@ -40,7 +40,7 @@ require_once __DIR__ . '/header.php';
                                 <div class="game-details">
                                     <!-- Affichage des détails du jeu -->
                                     <h3><?= htmlspecialchars($game['Nom_jeu']) ?></h3>
-                                    <p><?= isset($game['Plateformes']) ? htmlspecialchars($game['Plateformes']) : 'Plateformes inconnues' ?></p>
+                                    <p>Plateforme : <?= isset($game['Plateformes']) ? htmlspecialchars($game['Plateformes']) : 'Plateformes inconnues' ?></p>
                                     <p>Éditeur : <?= htmlspecialchars($game['Editeur_jeu']) ?></p>
                                     <p>Date de sortie : <?= htmlspecialchars($game['Date_sortie_jeu']) ?></p>
                                     <p>Temps passé : <?= htmlspecialchars($game['Temps_jeu']) ?> h</p>
