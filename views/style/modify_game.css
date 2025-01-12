@@ -92,3 +92,10 @@ aside img {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--footer-text-color);
+    font-size: 0.9rem;
+}
