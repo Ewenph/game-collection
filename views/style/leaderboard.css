@@ -1,60 +1,36 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Lexend', sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-}
-
-main {
-    padding: 20px;
-    text-align: center;
-}
-
-h1 {
-    font-size: 2rem;
-    color: #ffffff;
-    margin-bottom: 20px;
-}
-
 table {
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
     border-collapse: collapse;
-    background-color: #1e1e2e;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+    text-align: left; /* Aligner le contenu à gauche */
+}
+
+thead {
+    background-color: #2c2c3e; /* Fond sombre pour l'en-tête */
+    color: #ffffff;
 }
 
 thead th {
-    background-color: #1b1b27;
-    color: #bbbbbb;
+    padding: 10px;
+    font-weight: bold;
     text-transform: uppercase;
-    padding: 12px 15px;
-    font-weight: 600;
+    font-size: 0.9rem;
 }
 
 tbody tr {
-    border-bottom: 1px solid #333;
+    background-color: #1e1e2e; /* Fond du tableau */
+    color: #aaaaaa;
 }
 
-tbody tr:last-child {
-    border-bottom: none;
-}
-
-tbody tr:hover {
-    background-color: #2c2c3e;
+tbody tr:nth-child(even) {
+    background-color: #252534; /* Alterner légèrement la couleur des lignes */
 }
 
 tbody td {
-    padding: 12px 15px;
-    color: #eeeeee;
+    padding: 10px;
+    border: 1px solid #2c2c3e; /* Ajout de bordures discrètes */
 }
 
-footer {
-    margin-top: 20px;
-    text-align: center;
-    color: #888888;
-    font-size: 0.9rem;
+tbody tr:hover {
+    background-color: unset; /* Désactive l'effet de survol */
 }
