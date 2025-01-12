@@ -77,7 +77,7 @@ h1, h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 400px; /* Hauteur fixe pour toutes les cartes */
+    height: 400px;
 }
 
 /* Image du jeu */
@@ -90,7 +90,7 @@ h1, h2 {
 
 /* Contenu des cartes */
 .game-info {
-    flex: 1; /* Prend l'espace restant dans la carte */
+    flex: 1;
     padding: 15px;
     display: flex;
     flex-direction: column;

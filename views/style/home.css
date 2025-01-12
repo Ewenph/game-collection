@@ -76,7 +76,7 @@ body {
 }
 
 .game-link:hover .game-card {
-    transform: scale(1.02); /* Effet zoom au survol */
+    transform: scale(1.02);
     transition: transform 0.3s ease;
 }
 

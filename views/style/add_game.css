@@ -107,7 +107,7 @@ form button:hover {
 /* Groupement des plateformes - Alignement vertical */
 .platform-group {
     display: flex;
-    flex-direction: column; /* Aligner de haut en bas */
+    flex-direction: column;
     gap: 10px;
     margin-bottom: 15px;
 }

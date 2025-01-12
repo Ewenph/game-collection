@@ -20,7 +20,7 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    align-items: center; /* Aligner les éléments verticalement */
+    align-items: center;
 }
 
 nav ul li {
@@ -30,10 +30,10 @@ nav ul li {
 /* Style pour les liens de navigation */
 nav ul li a {
     color: var(--text-color);
-    text-decoration: none; /* Supprime le soulignement de base */
+    text-decoration: none;
     font-size: 1em;
-    position: relative; /* Nécessaire pour les pseudo-éléments */
-    transition: color 0.3s ease; /* Ajout d'une transition pour un effet de survol plus fluide */
+    position: relative;
+    transition: color 0.3s ease;
 }
 
 nav ul li a::before,
@@ -61,11 +61,11 @@ nav ul li a:hover::after {
 }
 
 nav ul li a:hover {
-    color: var(--primary-color-hover); /* Utilisation de la variable pour la couleur de survol */
+    color: var(--primary-color-hover);
 }
 
 /* Style pour le logo */
 .logo {
-    height: 40px; /* Ajustez la hauteur du logo selon vos besoins */
-    margin-right: 15px; /* Espace entre le logo et les autres éléments */
+    height: 40px;
+    margin-right: 15px;
 }
