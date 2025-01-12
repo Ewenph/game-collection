@@ -33,7 +33,7 @@ class GameController {
                 exit;
             }
         } else {
-            $suggestedGames = $this->gameModel->getSuggestedGames(9);
+            $suggestedGames = $this->gameModel->getSuggestedGames($_SESSION['user_id'], 9);
         }
 
         require_once __DIR__ . '/../views/games.php';

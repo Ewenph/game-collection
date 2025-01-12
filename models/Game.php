@@ -68,7 +68,7 @@ class Game {
             VALUES (:nom, :editeur, :sortie, :description, :id_multiplateforme, :url_jeu, :url_site)
         ");
         $stmt->execute($data);
-        return $this->db->lastInsertId();
+        return $stmt->lastInsertId();
     }
 
     // Mettre à jour un jeu existant
@@ -165,17 +165,19 @@ class Game {
         ]);
     }
 
-    // Récupérer 9 jeux aléatoires
-    public function getSuggestedGames($limit = 9) {
+    // Récupérer 9 jeux aléatoires qui ne sont pas dans la bibliothèque de l'utilisateur
+    public function getSuggestedGames($user_id, $limit = 9) {
         $stmt = $this->db->prepare("
             SELECT j.Id_jeu, j.Nom_jeu, j.Desc_jeu, j.Url_jeu, GROUP_CONCAT(p.Nom_plateforme SEPARATOR ', ') AS Plateformes
             FROM Jeu j
             LEFT JOIN Jeu_Plateforme jp ON j.Id_jeu = jp.Id_jeu
             LEFT JOIN Plateforme p ON jp.Id_plateforme = p.Id_plateforme
+            WHERE j.Id_jeu NOT IN (SELECT Id_jeu FROM Bibliothèque WHERE Id_uti = :user_id)
             GROUP BY j.Id_jeu
             ORDER BY RAND()
             LIMIT :limit
         ");
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
