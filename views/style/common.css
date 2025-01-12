@@ -1,6 +1,7 @@
 /* Import des variables CSS globales */
 @import url('variables.css');
 
+/* Style global pour le body */
 body {
     font-family: var(--font-family);
     background-color: var(--background-color);
@@ -13,12 +14,14 @@ body {
     height: 100vh;
 }
 
+/* Style pour le header */
 header {
     position: absolute;
     top: 0;
     width: 100%;
 }
 
+/* Style pour les formulaires */
 form {
     background-color: var(--secondary-color);
     padding: 20px 30px;
@@ -28,12 +31,14 @@ form {
     text-align: center;
 }
 
+/* Style pour les titres */
 h1 {
     color: var(--text-color);
     font-size: 1.5em;
     margin-bottom: 20px;
 }
 
+/* Style pour les labels */
 label {
     font-size: 0.9em;
     display: block;
@@ -41,6 +46,7 @@ label {
     text-align: left;
 }
 
+/* Style pour les champs de saisie */
 input {
     width: 100%;
     padding: 10px;
@@ -51,6 +57,7 @@ input {
     box-sizing: border-box;
 }
 
+/* Style pour les boutons */
 button {
     background-color: var(--primary-color);
     color: var(--text-color);
@@ -68,6 +75,7 @@ button:hover {
     background-color: var(--primary-color-hover);
 }
 
+/* Style pour les liens */
 a {
     color: var(--primary-color);
     text-decoration: none;
@@ -75,6 +83,7 @@ a {
     font-size: 0.9em;
 }
 
+/* Style pour le footer */
 footer {
     position: absolute;
     bottom: 10px;
