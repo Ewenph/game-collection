@@ -1,13 +1,10 @@
-/* Import des variables CSS globales */
-@import url('variables.css');
-
 /* Général */
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-family);
     margin: 0;
     padding: 0;
-    background-color: var(--primary-color); 
-    color: #fff; /* Texte blanc */
+    background-color: var(--background-color); /* Fond principal */
+    color: var(--text-color); /* Texte principal */
 }
 
 /* Conteneur principal */
@@ -28,19 +25,19 @@ section {
 section h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    color: #e6e6e6;
+    color: var(--text-color); /* Texte principal */
 }
 
 section p {
     margin: 5px 0 15px;
     font-size: 1rem;
-    color: #cccccc;
+    color: var(--description-text-color); /* Texte secondaire */
 }
 
 section h2 {
     margin-top: 20px;
     font-size: 1.5rem;
-    color: #e0e0e0;
+    color: var(--text-color);
 }
 
 form {
@@ -52,6 +49,7 @@ form label {
     margin-bottom: 5px;
     font-weight: bold;
     font-size: 0.9rem;
+    color: var(--text-color);
 }
 
 form input[type="number"] {
@@ -59,16 +57,16 @@ form input[type="number"] {
     padding: 8px;
     margin-bottom: 10px;
     font-size: 1rem;
-    border: 1px solid #444;
+    border: 1px solid var(--secondary-color);
     border-radius: 5px;
-    background-color: #1a1a1a;
-    color: #fff;
+    background-color: var(--input-background-color); /* Fond des champs */
+    color: var(--text-color); /* Texte principal */
 }
 
 form button {
     padding: 10px 20px;
-    background-color: #6a5acd; /* Violet */
-    color: white;
+    background-color: var(--primary-color); /* Couleur principale */
+    color: var(--text-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -77,15 +75,15 @@ form button {
 }
 
 form button:hover {
-    background-color: #5b4fb8; /* Violet plus foncé */
+    background-color: var(--primary-color-hover); /* Hover couleur principale */
 }
 
 form .delete-button {
-    background-color: #ff4444; /* Rouge */
+    background-color: var(--error-color); /* Rouge */
 }
 
 form .delete-button:hover {
-    background-color: #cc0000; /* Rouge foncé */
+    background-color: var(--error-color-hover); /* Hover rouge */
 }
 
 /* Image à droite */
@@ -94,4 +92,3 @@ aside img {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
-
