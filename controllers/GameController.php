@@ -95,4 +95,49 @@ class GameController {
 
         require_once __DIR__ . '/../views/modify_game.php';
     }
+
+    public function addToLibrary() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /login');
+            exit;
+        }
+    
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user_id = $_SESSION['user_id'];
+            $game_id = (int) $_POST['id_jeu'];
+    
+            // Vérifiez si le jeu est déjà dans la bibliothèque
+            $stmt = $this->db->prepare("
+                SELECT COUNT(*) 
+                FROM Bibliothèque 
+                WHERE Id_uti = :user_id AND Id_jeu = :game_id
+            ");
+            $stmt->execute([
+                'user_id' => $user_id,
+                'game_id' => $game_id
+            ]);
+    
+            if ($stmt->fetchColumn() == 0) {
+                // Insérez le jeu dans la bibliothèque
+                $stmt = $this->db->prepare("
+                    INSERT INTO Bibliothèque (Id_uti, Id_jeu) 
+                    VALUES (:user_id, :game_id)
+                ");
+                $stmt->execute([
+                    'user_id' => $user_id,
+                    'game_id' => $game_id
+                ]);
+    
+                // Redirection avec un message de succès
+                header('Location: /games?success=1');
+            } else {
+                // Redirection avec un message d'erreur (jeu déjà possédé)
+                header('Location: /games?error=already_owned');
+            }
+            exit;
+        }
+    }
 }

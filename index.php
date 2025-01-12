@@ -54,6 +54,10 @@ switch ($request) {
         $controller = new GameController();
         $controller->modifyGame();
         break;
+    case '/add_to_library':
+            $controller = new GameController();
+            $controller->addToLibrary();
+            break;
     default:
         http_response_code(404);
         include 'views/404.php';
