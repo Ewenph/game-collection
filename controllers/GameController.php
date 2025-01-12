@@ -75,23 +75,29 @@ class GameController {
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id_jeu = (int)$_POST['id_jeu'];
-            $data = [
-                'nom' => htmlspecialchars($_POST['nom']),
-                'editeur' => htmlspecialchars($_POST['editeur'] ?? ''),
-                'sortie' => $_POST['sortie'] ?? null,
-                'description' => htmlspecialchars($_POST['description'] ?? ''),
-                'id_multiplateforme' => count($_POST['platforms'] ?? []) > 1 ? 1 : 0,
-                'url_jeu' => htmlspecialchars($_POST['cover'] ?? ''),
-                'url_site' => htmlspecialchars($_POST['site'] ?? '')
-            ];
+            if (isset($_POST['update_time'])) {
+                $this->updateGameTime();
+            } elseif (isset($_POST['delete_game'])) {
+                $this->deleteGameFromLibrary();
+            } else {
+                $id_jeu = (int)$_POST['id_jeu'];
+                $data = [
+                    'nom' => htmlspecialchars($_POST['nom']),
+                    'editeur' => htmlspecialchars($_POST['editeur'] ?? ''),
+                    'sortie' => $_POST['sortie'] ?? null,
+                    'description' => htmlspecialchars($_POST['description'] ?? ''),
+                    'id_multiplateforme' => count($_POST['platforms'] ?? []) > 1 ? 1 : 0,
+                    'url_jeu' => htmlspecialchars($_POST['cover'] ?? ''),
+                    'url_site' => htmlspecialchars($_POST['site'] ?? '')
+                ];
 
-            $this->gameModel->update($id_jeu, $data);
-            $this->gameModel->removePlatforms($id_jeu);
-            $this->gameModel->addPlatforms($id_jeu, $_POST['platforms'] ?? []);
+                $this->gameModel->update($id_jeu, $data);
+                $this->gameModel->removePlatforms($id_jeu);
+                $this->gameModel->addPlatforms($id_jeu, $_POST['platforms'] ?? []);
 
-            header("Location: /modify_game?id=$id_jeu&success=1");
-            exit;
+                header("Location: /modify_game?id=$id_jeu&success=1");
+                exit;
+            }
         }
 
         if (isset($_GET['id'])) {
@@ -102,6 +108,27 @@ class GameController {
         }
 
         require_once __DIR__ . '/../views/modify_game.php';
+    }
+
+    private function updateGameTime() {
+        $id_jeu = (int)$_POST['id_jeu'];
+        $user_id = $_SESSION['user_id'];
+        $time = (int)$_POST['temps'];
+
+        $this->gameModel->addPlayTime($id_jeu, $user_id, $time);
+
+        header("Location: /modify_game?id=$id_jeu&success=1");
+        exit;
+    }
+
+    private function deleteGameFromLibrary() {
+        $id_jeu = (int)$_POST['id_jeu'];
+        $user_id = $_SESSION['user_id'];
+
+        $this->gameModel->removeGameFromLibrary($id_jeu, $user_id);
+
+        header("Location: /home?success=1");
+        exit;
     }
 
     public function addToLibrary() {
