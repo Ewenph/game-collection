@@ -109,7 +109,6 @@ class GameController {
             $user_id = $_SESSION['user_id'];
             $game_id = (int) $_POST['id_jeu'];
     
-            // Vérifiez si le jeu est déjà dans la bibliothèque
             $stmt = $this->db->prepare("
                 SELECT COUNT(*) 
                 FROM Bibliothèque 
@@ -121,7 +120,6 @@ class GameController {
             ]);
     
             if ($stmt->fetchColumn() == 0) {
-                // Insérez le jeu dans la bibliothèque
                 $stmt = $this->db->prepare("
                     INSERT INTO Bibliothèque (Id_uti, Id_jeu) 
                     VALUES (:user_id, :game_id)
@@ -131,10 +129,8 @@ class GameController {
                     'game_id' => $game_id
                 ]);
     
-                // Redirection avec un message de succès
                 header('Location: /games?success=1');
             } else {
-                // Redirection avec un message d'erreur (jeu déjà possédé)
                 header('Location: /games?error=already_owned');
             }
             exit;
