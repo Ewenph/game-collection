@@ -14,7 +14,7 @@ require_once __DIR__ . '/header.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier un jeu</title>
-    <link rel="stylesheet" href="/views/style/add_game.css">
+    <link rel="stylesheet" href="/views/style/modify_game.css">
 </head>
 <body>
     <main>
