@@ -1,6 +1,7 @@
 /* Import des variables CSS globales */
 @import url('variables.css');
 
+/* Style global pour le body */
 body {
     margin: 0;
     padding: 0;
@@ -13,10 +14,12 @@ body {
     height: 100vh;
 }
 
+/* Conteneur principal */
 .container {
     text-align: center;
 }
 
+/* Style pour le titre principal */
 h1 {
     font-size: 6em;
     margin: 0;
@@ -26,18 +29,14 @@ h1 {
     -webkit-text-fill-color: transparent;
 }
 
+/* Style pour le paragraphe */
 p {
     font-size: 1.5em;
 }
 
+/* Style pour les liens */
 a {
     color: var(--error-color);
     text-decoration: none;
     font-size: 1.2em;
-    margin-top: 20px;
-    display: inline-block;
-}
-
-a:hover {
-    text-decoration: underline;
 }
